@@ -560,12 +560,18 @@
       elements.appsGrid.innerHTML = `
         <div class="md:col-span-2 xl:col-span-3 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 px-6 py-20 text-center">
           <span class="material-symbols-outlined text-6xl mb-4 block text-slate-300 dark:text-slate-600" style="font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 48">search_off</span>
-          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">No apps found</h2>
-          <p class="text-slate-600 dark:text-slate-400 max-w-md mx-auto mb-6">Try a broader search, switch categories, or clear the current filters to see more apps.</p>
-          <button type="button" id="empty-clear-filters" class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">
-            <span class="material-symbols-outlined text-[18px]">close</span>
-            Clear Filters
-          </button>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">No apps match those filters</h2>
+          <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-6">Try a broader search, switch categories, or clear the current filters. If the library still misses your use case, request a new app on GitHub.</p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button type="button" id="empty-clear-filters" class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">
+              <span class="material-symbols-outlined text-[18px]">close</span>
+              Clear Filters
+            </button>
+            <a href="https://github.com/gic-mx/onePageApps/issues/new" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-slate-700 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-primary hover:text-primary transition-colors">
+              <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+              Request a new app
+            </a>
+          </div>
         </div>
       `;
       elements.loadMoreWrap.innerHTML = '';

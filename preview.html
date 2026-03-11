@@ -1013,6 +1013,13 @@
     }
 
     async function tryLoadDemo(app) {
+      revokeCurrentDemoUrl();
+      $('demo-frame-shell').classList.add('hidden');
+      $('demo-open-link').classList.add('hidden');
+      if (app.requiresAI || ((app.requiredKeys || []).length > 0)) {
+        renderDemoFallback(app, 'This preview only runs apps that are tryable in a static browser sandbox.');
+        return;
+      }
       $('demo-state').classList.remove('hidden');
       $('demo-state').innerHTML = `
         <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/15">
