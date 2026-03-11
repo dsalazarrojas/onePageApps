@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — One-Page Apps</title>
+  <meta name="description" content="Learn about onePageApps.gic.mx — a library of 200 free one-page web apps you can deploy to Cloudflare Workers in seconds, built by GIC." />
+  <link rel="canonical" href="https://onePageApps.gic.mx/about.html" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="About — One-Page Apps" />
+  <meta property="og:description" content="Learn about onePageApps.gic.mx — a library of 200 free one-page web apps." />
+  <meta property="og:url"         content="https://onePageApps.gic.mx/about.html" />
+  <meta property="og:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{primary:'#ec5b13'}}}}</script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" />
+  <style>
+    body { font-family: 'Public Sans', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
+      <a href="https://onePageApps.gic.mx/" class="flex items-center gap-2 font-bold text-lg text-primary">
+        <span class="material-symbols-outlined">widgets</span>
+        One-Page Apps
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-gray-600">
+        <a href="https://onePageApps.gic.mx/"               class="hover:text-primary transition-colors">Home</a>
+        <a href="https://onePageApps.gic.mx/browse.html"    class="hover:text-primary transition-colors">Browse</a>
+        <a href="https://onePageApps.gic.mx/categories/"    class="hover:text-primary transition-colors">Categories</a>
+        <a href="https://onePageApps.gic.mx/about.html"     class="text-primary font-semibold">About</a>
+      </nav>
+      <a href="https://onePageApps.gic.mx/browse.html"
+         class="inline-flex items-center gap-1 text-sm bg-primary text-white px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity font-medium">
+        <span class="material-symbols-outlined text-base">search</span>Browse Apps
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 flex-1">
+
+    <!-- Hero -->
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-primary/10 mb-6">
+        <span class="material-symbols-outlined text-primary" style="font-size:2.5rem">widgets</span>
+      </div>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">About One-Page Apps</h1>
+      <p class="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+        A curated library of 200 free, single-file web apps you can try instantly in your browser
+        and deploy to <strong>Cloudflare Workers</strong> in one click.
+      </p>
+    </div>
+
+    <!-- What it is -->
+    <section class="prose max-w-none mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is this?</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        <strong>onePageApps.gic.mx</strong> is a showcase and distribution site for 200 ready-to-deploy
+        Cloudflare Worker scripts — everything from AI text tools and image editors to calculators,
+        converters, and embeddable widgets.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Each app is a single <code class="bg-gray-100 rounded px-1">.js</code> file you can copy, customise,
+        and deploy to the Cloudflare Workers free tier in seconds. No build step, no dependencies,
+        no server to manage.
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        The collection is also available through the <strong>One-Page Apps</strong> iOS and macOS app,
+        which lets you browse, preview, and deploy apps directly from your device.
+      </p>
+    </section>
+
+    <!-- Feature cards -->
+    <section class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-14">
+      <div class="bg-white rounded-xl border border-gray-200 p-6 text-center">
+        <span class="material-symbols-outlined text-primary text-4xl mb-3 block">bolt</span>
+        <h3 class="font-semibold text-gray-900 mb-2">Instant Deploy</h3>
+        <p class="text-sm text-gray-600">Copy the script, paste into Cloudflare Workers, and you're live — often in under 60 seconds.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 p-6 text-center">
+        <span class="material-symbols-outlined text-primary text-4xl mb-3 block">open_source</span>
+        <h3 class="font-semibold text-gray-900 mb-2">Fully Open Source</h3>
+        <p class="text-sm text-gray-600">Every script is MIT-licensed. Use it, fork it, embed it — no strings attached.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-gray-200 p-6 text-center">
+        <span class="material-symbols-outlined text-primary text-4xl mb-3 block">category</span>
+        <h3 class="font-semibold text-gray-900 mb-2">17 Categories</h3>
+        <p class="text-sm text-gray-600">AI, converters, calculators, image tools, developer utilities, embeddable widgets, and more.</p>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="mb-14">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">How it works</h2>
+      <ol class="space-y-5">
+        <li class="flex gap-4">
+          <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
+          <div>
+            <p class="font-semibold text-gray-900">Browse or search</p>
+            <p class="text-sm text-gray-600 mt-1">Use the <a href="https://onePageApps.gic.mx/browse.html" class="text-primary hover:underline">Browse page</a> or <a href="https://onePageApps.gic.mx/categories/" class="text-primary hover:underline">category pages</a> to find an app that fits your needs.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm flex-shrink-0">2</div>
+          <div>
+            <p class="font-semibold text-gray-900">Try it live</p>
+            <p class="text-sm text-gray-600 mt-1">Each app has a live preview page so you can test it right here in your browser before deploying anything.</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm flex-shrink-0">3</div>
+          <div>
+            <p class="font-semibold text-gray-900">Deploy to Cloudflare Workers</p>
+            <p class="text-sm text-gray-600 mt-1">Copy the script (or use the iOS app to deploy with one tap). The Cloudflare free tier covers most personal and small-project usage.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Built by -->
+    <section class="bg-white rounded-2xl border border-gray-200 p-8 text-center">
+      <h2 class="text-xl font-bold text-gray-900 mb-3">Built by GIC</h2>
+      <p class="text-gray-600 leading-relaxed max-w-xl mx-auto mb-5">
+        This site is a companion to the <strong>oneTimeUseWebApp</strong> iOS/macOS app.
+        It's maintained by the same team that builds <a href="https://forms.gic.mx" class="text-primary hover:underline">forms.gic.mx</a>
+        and other open tools for everyday web development.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="https://onePageApps.gic.mx/browse.html"
+           class="inline-flex items-center gap-1.5 bg-primary text-white rounded-full px-5 py-2 text-sm font-medium hover:opacity-90 transition-opacity">
+          <span class="material-symbols-outlined text-base">search</span>Browse all apps
+        </a>
+        <a href="https://github.com/danielsalazar/onePageApps"
+           class="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 rounded-full px-5 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">
+          <span class="material-symbols-outlined text-base">open_in_new</span>GitHub
+        </a>
+        <a href="https://onePageApps.gic.mx/contact.html"
+           class="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 rounded-full px-5 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">
+          <span class="material-symbols-outlined text-base">mail</span>Contact
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto bg-white border-t border-gray-200 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 onePageApps.gic.mx — 200 free one-page web apps</p>
+      <nav class="flex flex-wrap gap-4">
+        <a href="https://onePageApps.gic.mx/about.html"   class="hover:text-primary transition-colors">About</a>
+        <a href="https://onePageApps.gic.mx/contact.html" class="hover:text-primary transition-colors">Contact</a>
+        <a href="https://onePageApps.gic.mx/privacy.html" class="hover:text-primary transition-colors">Privacy</a>
+        <a href="https://onePageApps.gic.mx/terms.html"   class="hover:text-primary transition-colors">Terms</a>
+        <a href="https://onePageApps.gic.mx/sitemap.xml"  class="hover:text-primary transition-colors">Sitemap</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
