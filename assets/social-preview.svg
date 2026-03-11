@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">One-Page Apps</title>
+  <desc id="desc">Browse, preview, and deploy Cloudflare Worker mini apps.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#fed7aa"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1040" cy="120" r="150" fill="#f97316" fill-opacity="0.12"/>
+  <circle cx="190" cy="520" r="140" fill="#2563eb" fill-opacity="0.1"/>
+  <rect x="78" y="78" width="1044" height="474" rx="34" fill="#ffffff" stroke="#fed7aa"/>
+  <g transform="translate(118 118)">
+    <rect width="76" height="76" rx="22" fill="url(#accent)"/>
+    <path d="M23 26h31v6H23zm0 14h31v6H23zm0 14h22v6H23z" fill="#fff" opacity="0.96"/>
+    <text x="100" y="34" font-family="Public Sans, Arial, sans-serif" font-size="30" font-weight="800" fill="#0f172a">One-Page Apps</text>
+    <text x="100" y="69" font-family="Public Sans, Arial, sans-serif" font-size="18" font-weight="600" fill="#ea580c">Cloudflare Worker templates with live previews</text>
+
+    <text x="0" y="158" font-family="Public Sans, Arial, sans-serif" font-size="66" font-weight="800" fill="#0f172a">200+ one-page web apps</text>
+    <text x="0" y="218" font-family="Public Sans, Arial, sans-serif" font-size="28" font-weight="500" fill="#475569">AI tools, widgets, calculators, converters, and browser-ready utilities.</text>
+
+    <g transform="translate(0 282)">
+      <rect width="180" height="74" rx="24" fill="#fff7ed" stroke="#fdba74"/>
+      <text x="24" y="28" font-family="Public Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#ea580c">Apps</text>
+      <text x="24" y="58" font-family="Public Sans, Arial, sans-serif" font-size="28" font-weight="800" fill="#0f172a">200+</text>
+    </g>
+    <g transform="translate(198 282)">
+      <rect width="180" height="74" rx="24" fill="#fff7ed" stroke="#fdba74"/>
+      <text x="24" y="28" font-family="Public Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#ea580c">Categories</text>
+      <text x="24" y="58" font-family="Public Sans, Arial, sans-serif" font-size="28" font-weight="800" fill="#0f172a">17</text>
+    </g>
+    <g transform="translate(396 282)">
+      <rect width="276" height="74" rx="24" fill="#fff7ed" stroke="#fdba74"/>
+      <text x="24" y="28" font-family="Public Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#ea580c">Workflow</text>
+      <text x="24" y="58" font-family="Public Sans, Arial, sans-serif" font-size="28" font-weight="800" fill="#0f172a">Preview → Deploy</text>
+    </g>
+  </g>
+  <g transform="translate(785 196)">
+    <rect width="258" height="202" rx="28" fill="#fffaf5" stroke="#fed7aa"/>
+    <rect x="18" y="18" width="222" height="42" rx="16" fill="#fff" stroke="#fed7aa"/>
+    <circle cx="38" cy="39" r="6" fill="#f87171"/>
+    <circle cx="56" cy="39" r="6" fill="#fbbf24"/>
+    <circle cx="74" cy="39" r="6" fill="#34d399"/>
+    <g transform="translate(22 82)">
+      <rect width="100" height="48" rx="16" fill="#fff7ed"/>
+      <text x="12" y="21" font-family="Public Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#ea580c">AI</text>
+      <text x="12" y="36" font-family="Public Sans, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a">Summarizer</text>
+    </g>
+    <g transform="translate(136 82)">
+      <rect width="100" height="48" rx="16" fill="#eff6ff"/>
+      <text x="12" y="21" font-family="Public Sans, Arial, sans-serif" font-size="12" font-weight="700" fill="#2563eb">Widget</text>
+      <text x="12" y="36" font-family="Public Sans, Arial, sans-serif" font-size="15" font-weight="800" fill="#0f172a">Countdown</text>
+    </g>
+    <g transform="translate(22 144)">
+      <rect width="100" height="40" rx="14" fill="#ecfeff"/>
+      <text x="12" y="25" font-family="Public Sans, Arial, sans-serif" font-size="13" font-weight="800" fill="#0f766e">Converter</text>
+    </g>
+    <g transform="translate(136 144)">
+      <rect width="100" height="40" rx="14" fill="#f5f3ff"/>
+      <text x="12" y="25" font-family="Public Sans, Arial, sans-serif" font-size="13" font-weight="800" fill="#7c3aed">Finance</text>
+    </g>
+  </g>
+</svg>

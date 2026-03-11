@@ -1,0 +1,14 @@
+STRATEGY.md
+context.txt
+collect_context.sh
+.claude/
+stitch/
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
