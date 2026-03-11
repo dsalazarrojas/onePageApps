@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Preview — One-Page Apps</title>
+  <meta name="description" content="Preview and deploy one-page web apps from onePageApps.gic.mx." />
+  <link id="meta-canonical" rel="canonical" href="https://onePageApps.gic.mx/preview.html" />
+
+  <meta property="og:type" content="website" />
+  <meta id="meta-og-title" property="og:title" content="App Preview — One-Page Apps" />
+  <meta id="meta-og-description" property="og:description" content="Preview and deploy one-page web apps from onePageApps.gic.mx." />
+  <meta id="meta-og-url" property="og:url" content="https://onePageApps.gic.mx/preview.html" />
+  <meta id="meta-og-image" property="og:image" content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta id="meta-twitter-title" name="twitter:title" content="App Preview — One-Page Apps" />
+  <meta id="meta-twitter-description" name="twitter:description" content="Preview and deploy one-page web apps from onePageApps.gic.mx." />
+  <meta id="meta-twitter-image" name="twitter:image" content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+
+  <script id="software-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"One-Page Apps Preview","applicationCategory":"Utilities","operatingSystem":"Any","url":"https://onePageApps.gic.mx/preview.html"}</script>
+
+  <script>if(localStorage.getItem('gic-theme')==='dark'||(!localStorage.getItem('gic-theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}</script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#ec5b13' },
+          fontFamily: { sans: ['Public Sans', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+    .dark ::-webkit-scrollbar-thumb { background: #475569; }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      vertical-align: middle;
+      user-select: none;
+    }
+
+    body { font-family: 'Public Sans', sans-serif; }
+
+    .surface-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+    .dark .surface-card {
+      background: #0f172a;
+      border-color: #1e293b;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      border: 1.5px solid #e2e8f0;
+      background: transparent;
+      color: #334155;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      border-color: #ec5b13;
+      color: #ec5b13;
+      background: rgba(236, 91, 19, 0.05);
+    }
+    .btn-outline:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+    .dark .btn-outline {
+      border-color: #334155;
+      color: #cbd5e1;
+    }
+    .dark .btn-outline:hover {
+      color: #fdba74;
+      border-color: #ec5b13;
+      background: rgba(236, 91, 19, 0.08);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1rem;
+      border-radius: 0.875rem;
+      background: #ec5b13;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    .btn-primary:hover { opacity: 0.92; }
+    .btn-primary:active { transform: translateY(1px); }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+
+    .deploy-card {
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .deploy-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      border-color: rgba(236, 91, 19, 0.35);
+    }
+    .dark .deploy-card:hover {
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .demo-frame {
+      width: 100%;
+      min-height: 600px;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      background: #fff;
+    }
+    .dark .demo-frame {
+      border-color: #334155;
+      background: #020617;
+    }
+
+    .skeleton-block {
+      position: relative;
+      overflow: hidden;
+      background: #e2e8f0;
+      border-radius: 0.75rem;
+    }
+    .dark .skeleton-block {
+      background: #1e293b;
+    }
+    .skeleton-block::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+      animation: shimmer 1.35s infinite;
+    }
+    .dark .skeleton-block::after {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    }
+    @keyframes shimmer {
+      100% { transform: translateX(100%); }
+    }
+
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4 {
+      color: #0f172a;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .dark .markdown-body h1,
+    .dark .markdown-body h2,
+    .dark .markdown-body h3,
+    .dark .markdown-body h4 {
+      color: #f8fafc;
+    }
+    .markdown-body h1 { font-size: 1.875rem; }
+    .markdown-body h2 { font-size: 1.5rem; }
+    .markdown-body h3 { font-size: 1.25rem; }
+    .markdown-body h4 { font-size: 1.125rem; }
+    .markdown-body p,
+    .markdown-body li,
+    .markdown-body blockquote {
+      color: #475569;
+      line-height: 1.8;
+    }
+    .dark .markdown-body p,
+    .dark .markdown-body li,
+    .dark .markdown-body blockquote {
+      color: #cbd5e1;
+    }
+    .markdown-body a {
+      color: #ec5b13;
+      text-decoration: none;
+    }
+    .markdown-body a:hover { text-decoration: underline; }
+    .markdown-body ul,
+    .markdown-body ol {
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+    .markdown-body ul { list-style: disc; }
+    .markdown-body ol { list-style: decimal; }
+    .markdown-body code {
+      background: rgba(148, 163, 184, 0.16);
+      border-radius: 0.375rem;
+      padding: 0.15rem 0.4rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+      color: #c2410c;
+    }
+    .dark .markdown-body code {
+      background: rgba(51, 65, 85, 0.9);
+      color: #fdba74;
+    }
+    .markdown-body pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 1rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .markdown-body pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+      font-size: 0.9rem;
+    }
+    .markdown-body blockquote {
+      border-left: 4px solid rgba(236, 91, 19, 0.35);
+      padding-left: 1rem;
+      margin: 1rem 0;
+    }
+    .markdown-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      border: 1px solid #e2e8f0;
+    }
+    .dark .markdown-body table {
+      border-color: #334155;
+    }
+    .markdown-body th,
+    .markdown-body td {
+      padding: 0.75rem;
+      text-align: left;
+      border-top: 1px solid #e2e8f0;
+    }
+    .dark .markdown-body th,
+    .dark .markdown-body td {
+      border-top-color: #334155;
+    }
+    .markdown-body th {
+      background: #f8fafc;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .dark .markdown-body th {
+      background: #020617;
+      color: #f8fafc;
+    }
+  </style>
+</head>
+<body class="font-sans bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-900/95">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <a href="https://onePageApps.gic.mx/" class="flex items-center gap-2 text-lg font-bold tracking-tight text-primary">
+        <span class="material-symbols-outlined">widgets</span>
+        <span>One-Page Apps</span>
+      </a>
+
+      <nav class="hidden items-center gap-6 text-sm md:flex">
+        <a href="https://onePageApps.gic.mx/" class="text-slate-600 transition-colors hover:text-primary dark:text-slate-300">Home</a>
+        <a href="https://onePageApps.gic.mx/browse.html" class="font-semibold text-primary">Browse</a>
+        <a href="https://onePageApps.gic.mx/categories/" class="text-slate-600 transition-colors hover:text-primary dark:text-slate-300">Categories</a>
+        <a href="https://onePageApps.gic.mx/about.html" class="text-slate-600 transition-colors hover:text-primary dark:text-slate-300">About</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button id="theme-toggle" type="button" class="btn-outline px-3 py-2" aria-label="Toggle dark mode" aria-pressed="false">
+          <span id="theme-toggle-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+          <span class="hidden sm:inline">Theme</span>
+        </button>
+        <a href="https://onePageApps.gic.mx/browse.html" class="inline-flex items-center gap-1 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90">
+          <span class="material-symbols-outlined text-base">search</span>
+          <span>Browse Apps</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <nav id="breadcrumb" class="mb-8 text-sm text-slate-500 dark:text-slate-400" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="https://onePageApps.gic.mx/" class="transition-colors hover:text-primary">Home</a></li>
+        <li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+        <li><a href="https://onePageApps.gic.mx/browse.html" class="transition-colors hover:text-primary">Browse</a></li>
+        <li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+        <li class="text-slate-700 dark:text-slate-200">Loading preview</li>
+      </ol>
+    </nav>
+
+    <section id="loading-state" class="space-y-8" aria-hidden="true">
+      <div class="grid gap-8 lg:grid-cols-5">
+        <div class="space-y-6 lg:col-span-3">
+          <div class="surface-card p-6 sm:p-8">
+            <div class="mb-6 flex items-start gap-4">
+              <div class="skeleton-block h-20 w-20 rounded-2xl"></div>
+              <div class="flex-1 space-y-3">
+                <div class="skeleton-block h-10 w-2/3"></div>
+                <div class="skeleton-block h-7 w-40 rounded-full"></div>
+                <div class="skeleton-block h-5 w-full"></div>
+                <div class="skeleton-block h-5 w-5/6"></div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <div class="skeleton-block h-10 w-36 rounded-full"></div>
+              <div class="skeleton-block h-10 w-32 rounded-full"></div>
+              <div class="skeleton-block h-10 w-40 rounded-full"></div>
+              <div class="skeleton-block h-10 w-44 rounded-full"></div>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <div class="skeleton-block h-8 w-24 rounded-full"></div>
+              <div class="skeleton-block h-8 w-20 rounded-full"></div>
+              <div class="skeleton-block h-8 w-28 rounded-full"></div>
+              <div class="skeleton-block h-8 w-16 rounded-full"></div>
+            </div>
+          </div>
+
+          <div class="surface-card p-6 sm:p-8">
+            <div class="mb-4 flex items-center justify-between gap-4">
+              <div class="space-y-3">
+                <div class="skeleton-block h-8 w-40"></div>
+                <div class="skeleton-block h-5 w-72"></div>
+              </div>
+              <div class="skeleton-block h-11 w-40 rounded-xl"></div>
+            </div>
+            <div class="skeleton-block h-[420px] w-full rounded-2xl"></div>
+          </div>
+
+          <div class="surface-card p-6 sm:p-8">
+            <div class="skeleton-block h-8 w-52 mb-4"></div>
+            <div class="space-y-3">
+              <div class="skeleton-block h-5 w-full"></div>
+              <div class="skeleton-block h-5 w-11/12"></div>
+              <div class="skeleton-block h-5 w-10/12"></div>
+              <div class="skeleton-block h-5 w-8/12"></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="space-y-6 lg:col-span-2">
+          <div class="surface-card p-6">
+            <div class="skeleton-block h-8 w-40 mb-4"></div>
+            <div class="space-y-3">
+              <div class="skeleton-block h-4 w-full"></div>
+              <div class="skeleton-block h-4 w-11/12"></div>
+              <div class="skeleton-block h-4 w-10/12"></div>
+              <div class="skeleton-block h-12 w-full rounded-xl mt-4"></div>
+              <div class="skeleton-block h-12 w-full rounded-xl"></div>
+            </div>
+          </div>
+          <div class="surface-card p-6">
+            <div class="skeleton-block h-8 w-32 mb-4"></div>
+            <div class="space-y-4">
+              <div class="skeleton-block h-5 w-full"></div>
+              <div class="skeleton-block h-5 w-5/6"></div>
+              <div class="skeleton-block h-5 w-2/3"></div>
+              <div class="skeleton-block h-5 w-1/2"></div>
+            </div>
+          </div>
+          <div class="surface-card p-6">
+            <div class="skeleton-block h-8 w-28 mb-4"></div>
+            <div class="skeleton-block h-12 w-full rounded-xl"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="error-state" class="hidden">
+      <div class="surface-card mx-auto max-w-3xl p-8 text-center sm:p-10">
+        <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-100 text-red-600 dark:bg-red-500/10 dark:text-red-300">
+          <span class="material-symbols-outlined text-3xl">error</span>
+        </div>
+        <h1 id="error-title" class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Unable to load app preview</h1>
+        <p id="error-message" class="mx-auto mt-3 max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
+          The requested app could not be found.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href="https://onePageApps.gic.mx/browse.html" class="btn-primary">
+            <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+            <span>Back to Browse</span>
+          </a>
+          <a href="https://onePageApps.gic.mx/categories/" class="btn-outline">
+            <span class="material-symbols-outlined text-[20px]">grid_view</span>
+            <span>Browse Categories</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="app-content" class="hidden space-y-10">
+      <div class="grid gap-8 lg:grid-cols-5 lg:items-start">
+        <div class="space-y-6 lg:col-span-3">
+          <section class="surface-card p-6 sm:p-8">
+            <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+              <div class="flex items-start gap-4 sm:gap-5">
+                <div class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary dark:bg-primary/15">
+                  <span id="app-icon" class="material-symbols-outlined text-4xl">apps</span>
+                </div>
+                <div class="min-w-0">
+                  <div class="mb-3 flex flex-wrap items-center gap-3">
+                    <h1 id="app-name" class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">App name</h1>
+                    <a id="app-category-badge" href="#" class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary transition hover:bg-primary/15 dark:bg-primary/15 dark:text-orange-200">Category</a>
+                  </div>
+                  <p id="app-description" class="max-w-3xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">App description</p>
+                </div>
+              </div>
+            </div>
+
+            <div id="meta-badges" class="mt-6 flex flex-wrap gap-3"></div>
+            <div id="tag-list" class="mt-5 flex flex-wrap gap-2"></div>
+          </section>
+
+          <section class="surface-card p-6 sm:p-8">
+            <div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Live Demo</h2>
+                <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">We try to extract the runnable HTML from the Cloudflare Worker source and show it in an isolated sandbox.</p>
+              </div>
+              <a id="demo-open-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-outline hidden whitespace-nowrap">
+                <span class="material-symbols-outlined text-[20px]">open_in_new</span>
+                <span>Open in new tab</span>
+              </a>
+            </div>
+
+            <div id="demo-state" class="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center dark:border-slate-700 dark:bg-slate-950/50" aria-live="polite">
+              <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/15">
+                <span class="material-symbols-outlined animate-spin text-2xl">progress_activity</span>
+              </div>
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Loading demo</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Fetching the worker script and looking for embedded HTML…</p>
+            </div>
+
+            <div id="demo-frame-shell" class="hidden">
+              <iframe id="demo-frame" class="demo-frame" sandbox="allow-scripts allow-forms allow-same-origin" title="App live demo"></iframe>
+              <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">This demo runs in an isolated sandbox. No data leaves your browser.</p>
+            </div>
+          </section>
+
+          <section id="help-section" class="hidden surface-card p-6 sm:p-8">
+            <div class="mb-5 flex items-center gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary dark:bg-primary/15">
+                <span class="material-symbols-outlined text-2xl">menu_book</span>
+              </div>
+              <div>
+                <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">How to Use</h2>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Documentation pulled directly from the app's markdown help file.</p>
+              </div>
+            </div>
+            <div id="help-loading" class="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400">
+              Loading documentation…
+            </div>
+            <div id="help-content" class="markdown-body hidden max-w-none"></div>
+          </section>
+        </div>
+
+        <aside class="space-y-6 lg:col-span-2">
+          <section class="surface-card deploy-card p-6">
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary dark:bg-primary/15">
+                <span class="material-symbols-outlined text-2xl">cloud</span>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Deploy to Cloudflare</h2>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Take the worker source and publish it in minutes.</p>
+              </div>
+            </div>
+
+            <ol class="space-y-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              <li class="flex gap-3"><span class="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary dark:bg-primary/15">1</span><span>Copy the worker script from this preview page.</span></li>
+              <li class="flex gap-3"><span class="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary dark:bg-primary/15">2</span><span>Open the Cloudflare dashboard and go to Workers &amp; Pages.</span></li>
+              <li class="flex gap-3"><span class="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary dark:bg-primary/15">3</span><span>Create a new Worker and replace the starter code.</span></li>
+              <li class="flex gap-3"><span class="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary dark:bg-primary/15">4</span><span>Paste, add any needed secrets, then deploy.</span></li>
+            </ol>
+
+            <div class="mt-6 flex flex-col gap-3">
+              <button id="copy-script-btn" type="button" class="btn-outline w-full">
+                <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                <span>Copy Script</span>
+              </button>
+              <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="btn-primary w-full">
+                <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                <span>Open Cloudflare Dashboard →</span>
+              </a>
+              <a id="deploy-source-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-outline w-full">
+                <span class="material-symbols-outlined text-[20px]">code</span>
+                <span>View Source on GitHub →</span>
+              </a>
+            </div>
+          </section>
+
+          <section class="surface-card p-6">
+            <h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">App Info</h2>
+            <dl class="mt-5 space-y-4 text-sm">
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Category</dt>
+                <dd class="mt-1 font-semibold text-slate-900 dark:text-slate-100"><a id="info-category-link" href="#" class="transition-colors hover:text-primary">—</a></dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Worker Script</dt>
+                <dd id="info-worker-script" class="mt-1 font-mono text-slate-900 dark:text-slate-100">—</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Script Path</dt>
+                <dd id="info-script-path" class="mt-1 break-all font-mono text-slate-900 dark:text-slate-100">—</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">Last updated</dt>
+                <dd class="mt-1 text-slate-900 dark:text-slate-100"><a id="info-history-link" href="#" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-primary">See GitHub for history</a></dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 dark:text-slate-400">License</dt>
+                <dd class="mt-1 text-slate-900 dark:text-slate-100">MIT</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="surface-card p-6">
+            <h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Share this app</h2>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Copy the direct preview link or share it on X with one click.</p>
+            <div class="mt-5 flex flex-col gap-3">
+              <button id="copy-url-btn" type="button" class="btn-outline w-full">
+                <span class="material-symbols-outlined text-[20px]">link</span>
+                <span>Copy URL</span>
+              </button>
+              <a id="share-twitter-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-outline w-full">
+                <span class="material-symbols-outlined text-[20px]">share</span>
+                <span>Share on X</span>
+              </a>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      <section id="related-section" class="hidden space-y-5">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 id="related-title" class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">More Apps</h2>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Explore a few more apps from the same category.</p>
+          </div>
+          <a id="related-view-all" href="#" class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            <span>View all apps</span>
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+        </div>
+        <div id="related-grid" class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="mt-auto border-t border-slate-200 bg-white py-8 dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-sm text-slate-500 dark:text-slate-400 sm:px-6 lg:flex-row lg:px-8">
+      <p>&copy; 2026 onePageApps.gic.mx — 200 free one-page web apps</p>
+      <nav class="flex flex-wrap items-center justify-center gap-4">
+        <a href="https://onePageApps.gic.mx/about.html" class="transition-colors hover:text-primary">About</a>
+        <a href="https://onePageApps.gic.mx/contact.html" class="transition-colors hover:text-primary">Contact</a>
+        <a href="https://onePageApps.gic.mx/privacy.html" class="transition-colors hover:text-primary">Privacy</a>
+        <a href="https://onePageApps.gic.mx/terms.html" class="transition-colors hover:text-primary">Terms</a>
+        <a href="https://onePageApps.gic.mx/sitemap.xml" class="transition-colors hover:text-primary">Sitemap</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const INDEX_URL = '/docs/apps-index.json';
+    const GITHUB_RAW = 'https://raw.githubusercontent.com/gic-mx/onePageApps/main/';
+    const GITHUB_BLOB = 'https://github.com/gic-mx/onePageApps/blob/main/';
+    const SITE_ORIGIN = 'https://onePageApps.gic.mx';
+    const SOCIAL_IMAGE = `${SITE_ORIGIN}/docs/assets/social-preview.png`;
+    const CLOUDFLARE_DASHBOARD = 'https://dash.cloudflare.com/';
+
+    const SYSTEM_IMAGE_MAP = {
+      accessibility: 'accessibility_new',
+      'arrow.2.circlepath': 'autorenew',
+      'arrow.left.arrow.right': 'swap_horiz',
+      'arrow.triangle.branch': 'account_tree',
+      'arrow.up.arrow.down': 'swap_vert',
+      'bubble.left.and.bubble.right.fill': 'chat',
+      cart: 'shopping_cart',
+      'chart.bar': 'bar_chart',
+      'chart.bar.fill': 'bar_chart',
+      checklist: 'checklist',
+      'checkmark.circle': 'check_circle',
+      'checkmark.shield': 'verified_user',
+      'doc.on.doc': 'content_copy',
+      'doc.plaintext': 'description',
+      'doc.richtext': 'edit_document',
+      'doc.text': 'article',
+      'dollarsign.circle': 'monetization_on',
+      'envelope.badge.fill': 'mail',
+      eye: 'visibility',
+      function: 'functions',
+      globe: 'language',
+      graduationcap: 'school',
+      hammer: 'construction',
+      'heart.text.square': 'favorite',
+      'key.horizontal': 'key',
+      'lock.circle': 'lock',
+      magnifyingglass: 'search',
+      'mic.fill': 'mic',
+      network: 'hub',
+      paintpalette: 'palette',
+      'pencil.and.scribble': 'edit_note',
+      'person.3': 'groups',
+      'person.badge.plus': 'person_add',
+      photo: 'image',
+      'photo.artframe': 'add_photo_alternate',
+      qrcode: 'qr_code',
+      'questionmark.circle': 'help',
+      'scribble.variable': 'draw',
+      sparkles: 'auto_awesome',
+      'square.on.square': 'layers',
+      tablecells: 'table_chart',
+      target: 'track_changes',
+      'text.alignleft': 'notes',
+      'text.magnifyingglass': 'find_in_page',
+      textformat: 'text_fields',
+      video: 'video_library',
+      waveform: 'graphic_eq'
+    };
+
+    const scriptCache = new Map();
+    let currentApp = null;
+    let currentDemoUrl = '';
+
+    const $ = (id) => document.getElementById(id);
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function truncate(text, maxLength) {
+      const value = String(text || '').trim();
+      if (value.length <= maxLength) return value;
+      return `${value.slice(0, Math.max(0, maxLength - 1)).trimEnd()}…`;
+    }
+
+    function absoluteLocalPath(path) {
+      if (!path) return '';
+      return path.startsWith('/') ? path : `/${path.replace(/^\.?\//, '')}`;
+    }
+
+    function githubRawUrl(path) {
+      return `${GITHUB_RAW}${String(path || '').replace(/^\/+/, '')}`;
+    }
+
+    function githubBlobUrl(path) {
+      return `${GITHUB_BLOB}${String(path || '').replace(/^\/+/, '')}`;
+    }
+
+    function githubHistoryUrl(path) {
+      return `https://github.com/gic-mx/onePageApps/commits/main/${String(path || '').replace(/^\/+/, '')}`;
+    }
+
+    function categorySlug(category) {
+      return String(category || '').trim().toLowerCase().replace(/_/g, '-');
+    }
+
+    function categoryUrl(app) {
+      return `${SITE_ORIGIN}/categories/${categorySlug(app.category)}.html`;
+    }
+
+    function previewUrl(id) {
+      return `${SITE_ORIGIN}/preview.html?id=${encodeURIComponent(id)}`;
+    }
+
+    function mapSystemImage(systemImage) {
+      return SYSTEM_IMAGE_MAP[systemImage] || 'apps';
+    }
+
+    function setTheme(theme) {
+      const isDark = theme === 'dark';
+      document.documentElement.classList.toggle('dark', isDark);
+      localStorage.setItem('gic-theme', theme);
+      updateThemeToggle();
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.contains('dark');
+      setTheme(isDark ? 'light' : 'dark');
+    }
+
+    function updateThemeToggle() {
+      const isDark = document.documentElement.classList.contains('dark');
+      $('theme-toggle').setAttribute('aria-pressed', String(isDark));
+      $('theme-toggle-icon').textContent = isDark ? 'light_mode' : 'dark_mode';
+    }
+
+    function setMetaTag(id, value) {
+      const node = $(id);
+      if (node) node.setAttribute('content', value);
+    }
+
+    function setDescription(value) {
+      const node = document.querySelector('meta[name="description"]');
+      if (node) node.setAttribute('content', value);
+    }
+
+    function populateMeta(app) {
+      const url = previewUrl(app.id);
+      const description = truncate(`${app.description} Preview ${app.name} from One-Page Apps. Review the demo, deployment steps, documentation, and source links.`, 158);
+      const title = `${app.name} — One-Page Apps`;
+
+      document.title = title;
+      setDescription(description);
+      $('meta-canonical').setAttribute('href', url);
+      setMetaTag('meta-og-title', title);
+      setMetaTag('meta-og-description', description);
+      setMetaTag('meta-og-url', url);
+      setMetaTag('meta-og-image', SOCIAL_IMAGE);
+      setMetaTag('meta-twitter-title', title);
+      setMetaTag('meta-twitter-description', description);
+      setMetaTag('meta-twitter-image', SOCIAL_IMAGE);
+
+      const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: app.name,
+        description: app.description,
+        applicationCategory: app.categoryDisplay,
+        operatingSystem: 'Any',
+        browserRequirements: 'Requires JavaScript and a modern browser.',
+        isAccessibleForFree: true,
+        url,
+        image: SOCIAL_IMAGE,
+        keywords: (app.tags || []).join(', '),
+        softwareHelp: app.hasHelp ? url : undefined,
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD'
+        },
+        creator: {
+          '@type': 'Organization',
+          name: 'One-Page Apps',
+          url: SITE_ORIGIN
+        },
+        featureList: [
+          app.requiresAI ? 'Requires AI' : 'No AI required',
+          app.storesData ? 'Stores data' : 'Does not store data',
+          app.supportsNotifications ? 'Supports notifications' : 'No notifications',
+          ...(app.requiredKeys || []).map((key) => `Needs key: ${key}`)
+        ]
+      };
+      $('software-schema').textContent = JSON.stringify(schema);
+    }
+
+    function renderBreadcrumb(app) {
+      const categoryLink = categoryUrl(app);
+      $('breadcrumb').innerHTML = `
+        <ol class="flex flex-wrap items-center gap-1.5">
+          <li><a href="${SITE_ORIGIN}/" class="transition-colors hover:text-primary">Home</a></li>
+          <li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+          <li><a href="${SITE_ORIGIN}/browse.html" class="transition-colors hover:text-primary">Browse</a></li>
+          <li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+          <li><a href="${categoryLink}" class="transition-colors hover:text-primary">${escapeHtml(app.categoryDisplay)}</a></li>
+          <li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+          <li class="font-medium text-slate-700 dark:text-slate-200">${escapeHtml(app.name)}</li>
+        </ol>`;
+    }
+
+    function renderErrorBreadcrumb() {
+      $('breadcrumb').innerHTML = `
+        <ol class="flex flex-wrap items-center gap-1.5">
+          <li><a href="${SITE_ORIGIN}/" class="transition-colors hover:text-primary">Home</a></li>
+          <li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+          <li><a href="${SITE_ORIGIN}/browse.html" class="transition-colors hover:text-primary">Browse</a></li>
+          <li><span class="material-symbols-outlined text-xs">chevron_right</span></li>
+          <li class="font-medium text-slate-700 dark:text-slate-200">Preview</li>
+        </ol>`;
+    }
+
+    function createBadge(content, classes, icon) {
+      return `<span class="status-badge ${classes}">${icon ? `<span class="material-symbols-outlined text-[18px]">${icon}</span>` : ''}<span>${escapeHtml(content)}</span></span>`;
+    }
+
+    function populateHeader(app) {
+      renderBreadcrumb(app);
+      $('app-icon').textContent = mapSystemImage(app.systemImage);
+      $('app-name').textContent = app.name;
+      $('app-description').textContent = app.description;
+      $('app-category-badge').textContent = app.categoryDisplay;
+      $('app-category-badge').href = categoryUrl(app);
+
+      const badges = [];
+      if (app.requiresAI) {
+        badges.push(createBadge('Requires AI', 'bg-purple-100 text-purple-700 border-purple-200 dark:bg-purple-500/10 dark:text-purple-300 dark:border-purple-500/20', 'auto_awesome'));
+      }
+      if (app.storesData) {
+        badges.push(createBadge('Stores Data', 'bg-sky-100 text-sky-700 border-sky-200 dark:bg-sky-500/10 dark:text-sky-300 dark:border-sky-500/20', 'database'));
+      }
+      if (app.supportsNotifications) {
+        badges.push(createBadge('Sends Notifications', 'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-500/10 dark:text-amber-300 dark:border-amber-500/20', 'notifications_active'));
+      }
+      (app.requiredKeys || []).forEach((key) => {
+        badges.push(createBadge(`Needs: ${key}`, 'bg-orange-100 text-orange-700 border-orange-200 dark:bg-orange-500/10 dark:text-orange-300 dark:border-orange-500/20', 'vpn_key'));
+      });
+      if (!app.requiresAI && (!app.requiredKeys || app.requiredKeys.length === 0)) {
+        badges.push(createBadge('No API Keys Needed', 'bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/20', 'check_circle'));
+      }
+      $('meta-badges').innerHTML = badges.join('');
+
+      const tags = (app.tags || []).slice(0, 8).map((tag) => `
+        <span class="inline-flex items-center rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">${escapeHtml(tag)}</span>
+      `);
+      $('tag-list').innerHTML = tags.length ? tags.join('') : '<span class="text-sm text-slate-500 dark:text-slate-400">No tags listed for this app.</span>';
+    }
+
+    function populateSidebar(app) {
+      const categoryHref = categoryUrl(app);
+      const sourceHref = githubBlobUrl(app.scriptPath);
+      const historyHref = githubHistoryUrl(app.scriptPath);
+      const appUrl = previewUrl(app.id);
+      $('deploy-source-link').href = sourceHref;
+      $('info-category-link').textContent = app.categoryDisplay;
+      $('info-category-link').href = categoryHref;
+      $('info-worker-script').textContent = `${app.workerScriptName}.js`;
+      $('info-script-path').textContent = app.scriptPath;
+      $('info-history-link').href = historyHref;
+      $('share-twitter-link').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`Check out ${app.name} on One-Page Apps`)}&url=${encodeURIComponent(appUrl)}`;
+      $('copy-url-btn').dataset.copyText = appUrl;
+      $('copy-script-btn').dataset.scriptPath = app.scriptPath;
+    }
+
+    function renderRelated(app, apps) {
+      const relatedApps = (apps || []).filter((item) => item.category === app.category && item.id !== app.id).slice(0, 4);
+      const viewAllHref = categoryUrl(app);
+      $('related-title').textContent = `More ${app.categoryDisplay} Apps`;
+      $('related-view-all').href = viewAllHref;
+      $('related-view-all').innerHTML = `<span>View all ${escapeHtml(app.categoryDisplay)} apps</span><span class="material-symbols-outlined text-base">arrow_forward</span>`;
+
+      if (!relatedApps.length) {
+        $('related-section').classList.add('hidden');
+        return;
+      }
+
+      $('related-grid').innerHTML = relatedApps.map((item) => `
+        <article class="surface-card flex flex-col gap-3 p-5 transition-shadow hover:shadow-md dark:hover:shadow-black/20">
+          <div class="flex items-start gap-3">
+            <div class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary dark:bg-primary/15">
+              <span class="material-symbols-outlined text-[22px]">${escapeHtml(mapSystemImage(item.systemImage))}</span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold leading-snug text-slate-900 dark:text-slate-100">${escapeHtml(item.name)}</h3>
+              <p class="mt-1 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">${escapeHtml(item.categoryDisplay)}</p>
+            </div>
+          </div>
+          <p class="flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">${escapeHtml(item.description)}</p>
+          <a href="${previewUrl(item.id)}" class="inline-flex items-center gap-1 self-start text-sm font-semibold text-primary hover:underline">
+            <span class="material-symbols-outlined text-base">open_in_new</span>
+            <span>Preview</span>
+          </a>
+        </article>
+      `).join('');
+      $('related-section').classList.remove('hidden');
+    }
+
+    async function fetchTextFromCandidates(candidates) {
+      let lastError = new Error('Request failed.');
+      for (const candidate of candidates) {
+        if (!candidate) continue;
+        try {
+          const response = await fetch(candidate, { cache: 'no-store' });
+          if (!response.ok) {
+            lastError = new Error(`${response.status} ${response.statusText}`);
+            continue;
+          }
+          return await response.text();
+        } catch (error) {
+          lastError = error;
+        }
+      }
+      throw lastError;
+    }
+
+    async function fetchIndex() {
+      const text = await fetchTextFromCandidates([
+        INDEX_URL,
+        githubRawUrl('docs/apps-index.json')
+      ]);
+      return JSON.parse(text);
+    }
+
+    async function fetchScript(app) {
+      if (scriptCache.has(app.scriptPath)) return scriptCache.get(app.scriptPath);
+      const text = await fetchTextFromCandidates([
+        absoluteLocalPath(app.scriptPath),
+        githubRawUrl(app.scriptPath)
+      ]);
+      scriptCache.set(app.scriptPath, text);
+      return text;
+    }
+
+    function ensureDocumentHtml(html) {
+      const trimmed = String(html || '').trim();
+      if (!trimmed) return '';
+      if (/<html[\s>]/i.test(trimmed)) {
+        return /^<!doctype/i.test(trimmed) ? trimmed : `<!DOCTYPE html>\n${trimmed}`;
+      }
+      return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body>${trimmed}</body></html>`;
+    }
+
+    function decodeQuotedString(value, quote) {
+      if (quote === '`') return value;
+      return value
+        .replace(/\\n/g, '\n')
+        .replace(/\\r/g, '\r')
+        .replace(/\\t/g, '\t')
+        .replace(/\\'/g, "'")
+        .replace(/\\"/g, '"')
+        .replace(/\\\\/g, '\\');
+    }
+
+    function extractHtmlFromWorker(source) {
+      const templateCandidates = [...String(source || '').matchAll(/`([\s\S]*?)`/g)]
+        .map((match) => match[1])
+        .filter((candidate) => /<!DOCTYPE html|<html[\s>]|<body[\s>]/i.test(candidate))
+        .sort((a, b) => b.length - a.length);
+      if (templateCandidates.length) {
+        return ensureDocumentHtml(templateCandidates[0]);
+      }
+
+      const quotedCandidates = [...String(source || '').matchAll(/(['"])([\s\S]*?)\1/g)]
+        .map((match) => decodeQuotedString(match[2], match[1]))
+        .filter((candidate) => /<!DOCTYPE html|<html[\s>]|<body[\s>]/i.test(candidate))
+        .sort((a, b) => b.length - a.length);
+
+      return quotedCandidates.length ? ensureDocumentHtml(quotedCandidates[0]) : '';
+    }
+
+    function revokeCurrentDemoUrl() {
+      if (currentDemoUrl) {
+        URL.revokeObjectURL(currentDemoUrl);
+        currentDemoUrl = '';
+      }
+    }
+
+    function renderDemoFallback(app, reason) {
+      $('demo-frame-shell').classList.add('hidden');
+      $('demo-open-link').classList.add('hidden');
+      const needsKeys = app.requiresAI || ((app.requiredKeys || []).length > 0);
+      const title = needsKeys ? 'Demo Requires API Keys' : 'Demo Unavailable';
+      const body = needsKeys
+        ? `This app likely needs runtime secrets before its live UI can work. Configure ${escapeHtml((app.requiredKeys || ['AI / provider keys']).join(', '))} in Cloudflare Workers, then deploy the script to test the full experience.`
+        : 'We could not extract a self-contained HTML interface from the worker source. This template may expose only API endpoints or generate the UI dynamically at runtime.';
+      const icon = needsKeys ? 'vpn_key' : 'browser_not_supported';
+      const subtle = reason ? `<p class="mt-2 text-xs text-slate-500 dark:text-slate-500">${escapeHtml(String(reason))}</p>` : '';
+      $('demo-state').innerHTML = `
+        <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full ${needsKeys ? 'bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300' : 'bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300'}">
+          <span class="material-symbols-outlined text-[28px]">${icon}</span>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">${title}</h3>
+        <p class="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-slate-400">${body}</p>
+        ${subtle}
+      `;
+      $('demo-state').classList.remove('hidden');
+    }
+
+    function renderDemoFrame(app, html) {
+      revokeCurrentDemoUrl();
+      const blob = new Blob([html], { type: 'text/html' });
+      currentDemoUrl = URL.createObjectURL(blob);
+      $('demo-frame').src = currentDemoUrl;
+      $('demo-frame').title = `${app.name} live demo`;
+      $('demo-open-link').href = currentDemoUrl;
+      $('demo-open-link').classList.remove('hidden');
+      $('demo-frame-shell').classList.remove('hidden');
+      $('demo-state').classList.add('hidden');
+    }
+
+    async function tryLoadDemo(app) {
+      $('demo-state').classList.remove('hidden');
+      $('demo-state').innerHTML = `
+        <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/15">
+          <span class="material-symbols-outlined animate-spin text-2xl">progress_activity</span>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Loading demo</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Fetching the worker script and looking for embedded HTML…</p>
+      `;
+      try {
+        const source = await fetchScript(app);
+        const html = extractHtmlFromWorker(source);
+        if (!html) {
+          renderDemoFallback(app);
+          return;
+        }
+        renderDemoFrame(app, html);
+      } catch (error) {
+        renderDemoFallback(app, error?.message || 'Unable to fetch the worker source.');
+      }
+    }
+
+    function postProcessMarkdown(root) {
+      root.querySelectorAll('a').forEach((link) => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      });
+    }
+
+    async function loadHelp(app) {
+      $('help-section').classList.remove('hidden');
+      $('help-loading').classList.remove('hidden');
+      $('help-content').classList.add('hidden');
+      try {
+        const markdown = await fetchTextFromCandidates([
+          absoluteLocalPath(app.helpPath),
+          githubRawUrl(app.helpPath)
+        ]);
+        const renderer = window.marked;
+        const html = renderer ? renderer.parse(markdown, { gfm: true, breaks: false }) : `<pre>${escapeHtml(markdown)}</pre>`;
+        $('help-content').innerHTML = html;
+        postProcessMarkdown($('help-content'));
+        $('help-loading').classList.add('hidden');
+        $('help-content').classList.remove('hidden');
+      } catch (error) {
+        $('help-loading').innerHTML = `
+          <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-200">
+            Documentation unavailable.
+          </div>`;
+      }
+    }
+
+    async function copyToClipboard(text) {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'absolute';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      textarea.remove();
+    }
+
+    function flashButton(button, nextLabel, delay = 1800) {
+      const label = button.querySelector('span:last-child');
+      if (!label) return;
+      const original = button.dataset.originalLabel || label.textContent;
+      button.dataset.originalLabel = original;
+      label.textContent = nextLabel;
+      window.clearTimeout(button._flashTimer);
+      button._flashTimer = window.setTimeout(() => {
+        label.textContent = original;
+      }, delay);
+    }
+
+    async function handleCopyUrl() {
+      if (!currentApp) return;
+      const button = $('copy-url-btn');
+      try {
+        await copyToClipboard(previewUrl(currentApp.id));
+        flashButton(button, 'Copied!');
+      } catch (error) {
+        flashButton(button, 'Copy failed');
+      }
+    }
+
+    async function handleCopyScript() {
+      if (!currentApp) return;
+      const button = $('copy-script-btn');
+      button.disabled = true;
+      try {
+        const source = await fetchScript(currentApp);
+        await copyToClipboard(source);
+        flashButton(button, 'Copied!');
+      } catch (error) {
+        flashButton(button, 'Unavailable');
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    function showError(title, message) {
+      revokeCurrentDemoUrl();
+      document.title = 'App Preview — One-Page Apps';
+      renderErrorBreadcrumb();
+      $('loading-state').classList.add('hidden');
+      $('app-content').classList.add('hidden');
+      $('error-title').textContent = title;
+      $('error-message').textContent = message;
+      $('error-state').classList.remove('hidden');
+    }
+
+    function showContent() {
+      $('loading-state').classList.add('hidden');
+      $('error-state').classList.add('hidden');
+      $('app-content').classList.remove('hidden');
+    }
+
+    async function init() {
+      updateThemeToggle();
+      const id = new URLSearchParams(window.location.search).get('id');
+      if (!id) {
+        showError('No app specified', 'Use the browse page to choose an app preview. Once you pick one, this page will load its metadata, demo, and deployment instructions.');
+        return;
+      }
+
+      try {
+        const data = await fetchIndex();
+        const app = (data.apps || []).find((item) => item.id === id);
+        if (!app) {
+          showError('App not found', 'That app id was not found in the current index. It may have been renamed, removed, or linked incorrectly.');
+          return;
+        }
+
+        currentApp = app;
+        populateMeta(app);
+        populateHeader(app);
+        populateSidebar(app);
+        renderRelated(app, data.apps || []);
+        showContent();
+        void tryLoadDemo(app);
+        if (app.hasHelp) {
+          void loadHelp(app);
+        } else {
+          $('help-section').classList.add('hidden');
+        }
+      } catch (error) {
+        showError('Unable to load app preview', 'The apps index could not be fetched right now. Please refresh the page or try again in a moment.');
+      }
+    }
+
+    $('theme-toggle').addEventListener('click', toggleTheme);
+    $('copy-url-btn').addEventListener('click', handleCopyUrl);
+    $('copy-script-btn').addEventListener('click', handleCopyScript);
+    window.addEventListener('beforeunload', revokeCurrentDemoUrl);
+    init();
+  </script>
+</body>
+</html>
