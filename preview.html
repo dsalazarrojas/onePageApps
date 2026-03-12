@@ -964,20 +964,32 @@
     }
 
     function extractHtmlFromWorker(source) {
-      const templateCandidates = [...String(source || '').matchAll(/`([\s\S]*?)`/g)]
-        .map((match) => match[1])
-        .filter((candidate) => /<!DOCTYPE html|<html[\s>]|<body[\s>]/i.test(candidate))
-        .sort((a, b) => b.length - a.length);
-      if (templateCandidates.length) {
-        return ensureDocumentHtml(templateCandidates[0]);
-      }
+      const src = String(source || '');
+      const isHtml = (s) => /<!DOCTYPE html|<html[\s>]|<body[\s>]/i.test(s);
+      const longest = (arr) => arr.sort((a, b) => b.length - a.length)[0];
 
-      const quotedCandidates = [...String(source || '').matchAll(/(['"])([\s\S]*?)\1/g)]
-        .map((match) => decodeQuotedString(match[2], match[1]))
-        .filter((candidate) => /<!DOCTYPE html|<html[\s>]|<body[\s>]/i.test(candidate))
-        .sort((a, b) => b.length - a.length);
+      // Template literals — backtick strings can contain unescaped HTML directly
+      const templateCandidates = [...src.matchAll(/`([\s\S]*?)`/g)]
+        .map((m) => m[1]).filter(isHtml);
+      if (templateCandidates.length) return ensureDocumentHtml(longest(templateCandidates));
 
-      return quotedCandidates.length ? ensureDocumentHtml(quotedCandidates[0]) : '';
+      // Double-quoted strings — use a regex that correctly skips \" escape sequences
+      // instead of stopping at the first internal quote character
+      const dqCandidates = [...src.matchAll(/"((?:[^"\\]|\\[\s\S])*)"/g)]
+        .map((m) => decodeQuotedString(m[1], '"')).filter(isHtml);
+      if (dqCandidates.length) return ensureDocumentHtml(longest(dqCandidates));
+
+      // Single-quoted strings — same escape-aware approach
+      const sqCandidates = [...src.matchAll(/'((?:[^'\\]|\\[\s\S])*)'/g)]
+        .map((m) => decodeQuotedString(m[1], "'")).filter(isHtml);
+      return sqCandidates.length ? ensureDocumentHtml(longest(sqCandidates)) : '';
+    }
+
+    function injectPreviewBanner(html) {
+      const banner = `<div style="position:fixed;bottom:0;left:0;right:0;background:#1e293b;color:#94a3b8;font-family:system-ui,sans-serif;font-size:12px;padding:6px 14px;display:flex;align-items:center;gap:8px;z-index:2147483647;border-top:1px solid #334155;line-height:1.4"><svg width="13" height="13" fill="none" viewBox="0 0 24 24" style="flex-shrink:0;opacity:.65"><path stroke="#94a3b8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg><span>Browser sandbox preview &mdash; submit &amp; save features require Cloudflare deployment</span></div><style>body{padding-bottom:38px!important}</style>`;
+      return /<\/body>/i.test(html)
+        ? html.replace(/<\/body>/i, `${banner}</body>`)
+        : html + banner;
     }
 
     function revokeCurrentDemoUrl() {
@@ -1010,7 +1022,7 @@
 
     function renderDemoFrame(app, html) {
       revokeCurrentDemoUrl();
-      const blob = new Blob([html], { type: 'text/html' });
+      const blob = new Blob([injectPreviewBanner(html)], { type: 'text/html' });
       currentDemoUrl = URL.createObjectURL(blob);
       $('demo-frame').src = currentDemoUrl;
       $('demo-frame').title = `${app.name} live demo`;
