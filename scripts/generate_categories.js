@@ -26,6 +26,72 @@ const INDEX_JSON  = path.join(DOCS_DIR, "apps-index.json");
 const BASE_URL    = "https://onePageApps.gic.mx";
 
 // ---------------------------------------------------------------------------
+// SF Symbol → Material Symbols mapping
+// The apps-index.json stores Apple SF Symbol names (for iOS app use).
+// Category pages use Google Material Symbols, which need different names.
+// ---------------------------------------------------------------------------
+const SF_TO_MATERIAL = {
+  "accessibility":                    "accessibility",
+  "arrow.2.circlepath":               "sync",
+  "arrow.left.arrow.right":           "swap_horiz",
+  "arrow.triangle.branch":            "call_split",
+  "arrow.up.arrow.down":              "swap_vert",
+  "bubble.left.and.bubble.right.fill":"chat",
+  "cart":                             "shopping_cart",
+  "chart.bar":                        "bar_chart",
+  "chart.bar.fill":                   "bar_chart",
+  "checklist":                        "checklist",
+  "checkmark.circle":                 "check_circle",
+  "checkmark.shield":                 "verified_user",
+  "doc.on.doc":                       "content_copy",
+  "doc.plaintext":                    "article",
+  "doc.richtext":                     "description",
+  "doc.text":                         "description",
+  "dollarsign.circle":                "monetization_on",
+  "envelope.badge.fill":              "mark_email_unread",
+  "eye":                              "visibility",
+  "function":                         "function",
+  "globe":                            "language",
+  "graduationcap":                    "school",
+  "hammer":                           "build",
+  "heart.text.square":                "favorite",
+  "key.horizontal":                   "key",
+  "lock.circle":                      "lock",
+  "magnifyingglass":                  "search",
+  "mic.fill":                         "mic",
+  "network":                          "hub",
+  "paintpalette":                     "palette",
+  "pencil.and.scribble":              "edit_note",
+  "person.3":                         "group",
+  "person.badge.plus":                "person_add",
+  "photo":                            "photo",
+  "photo.artframe":                   "image",
+  "qrcode":                           "qr_code",
+  "questionmark.circle":              "help",
+  "scribble.variable":                "gesture",
+  "sparkles":                         "auto_awesome",
+  "square.on.square":                 "content_copy",
+  "tablecells":                       "table_chart",
+  "target":                           "gps_fixed",
+  "text.alignleft":                   "format_align_left",
+  "text.magnifyingglass":             "manage_search",
+  "textformat":                       "format_size",
+  "video":                            "videocam",
+  "waveform":                         "graphic_eq",
+};
+
+/** Convert an SF Symbol name to the closest Material Symbol name. */
+function toMaterialSymbol(sfName) {
+  if (!sfName) return "widgets";
+  // Check mapping table first (covers both dot-separated and single-word SF names)
+  if (SF_TO_MATERIAL[sfName]) return SF_TO_MATERIAL[sfName];
+  // No mapping found: if no dots it might already be a valid Material Symbol
+  if (!sfName.includes(".")) return sfName;
+  // Dot-separated SF name with no mapping — safe fallback
+  return "widgets";
+}
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 function readJSON(p) {
@@ -209,8 +275,8 @@ function appCard(app) {
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
           <div class="flex items-start justify-between gap-2">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <span class="material-symbols-outlined text-primary text-xl">${escape(app.systemImage || "widgets")}</span>
+              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                <span class="material-symbols-outlined text-primary text-xl">${escape(toMaterialSymbol(app.systemImage))}</span>
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">${escape(app.name)}</h3>
