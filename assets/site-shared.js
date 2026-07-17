@@ -1,5 +1,5 @@
 (function () {
-  const DEFAULT_BRIDGE_URL = '';
+  const DEFAULT_BRIDGE_URL = 'https://onepageapps-bridge.dsalazar.workers.dev';
 
   const STORAGE_KEYS = Object.freeze({
     bridgeUrl: 'opa-bridge-url',
