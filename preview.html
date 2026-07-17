@@ -457,7 +457,7 @@
             <div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Live Demo</h2>
-                <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">We try to extract the runnable HTML from the Cloudflare Worker source and show it in an isolated sandbox.</p>
+                <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">We try to extract the runnable HTML from the template source and show it in an isolated sandbox.</p>
               </div>
               <a id="demo-open-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-outline hidden whitespace-nowrap">
                 <span class="material-symbols-outlined text-[20px]">open_in_new</span>
@@ -470,7 +470,7 @@
                 <span class="material-symbols-outlined animate-spin text-2xl">progress_activity</span>
               </div>
               <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Loading demo</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Fetching the worker script and looking for embedded HTML…</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Fetching the app source and looking for embedded HTML…</p>
             </div>
 
             <div id="demo-frame-shell" class="hidden">
@@ -515,20 +515,13 @@
               </div>
               <div>
                 <h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Deploy to Cloudflare</h2>
-                <p class="text-sm text-slate-600 dark:text-slate-400">Take the worker source and publish it in minutes.</p>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Take this template and publish it in minutes.</p>
               </div>
             </div>
 
             <div id="deploy-static-details" class="space-y-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-              <p>Use the preview as your deploy launchpad: copy the script, send it to your own Cloudflare account, or publish it to a hosted `*.onepageapps.gic.mx` URL when your plan allows it.</p>
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/50">
-                <div class="font-semibold text-slate-900 dark:text-slate-100">Best path for free users</div>
-                <p class="mt-1">Deploy with your own Cloudflare account. Credentials stay in your browser and are forwarded only to Cloudflare through the bridge worker.</p>
-              </div>
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/50">
-                <div class="font-semibold text-slate-900 dark:text-slate-100">Best path for Pro / Business</div>
-                <p class="mt-1">Use GIC-hosted deploys for shareable subdomains and managed publishing limits based on your subscription tier.</p>
-              </div>
+              <p>Use the preview as your deploy launchpad: copy the script, send it to your own Cloudflare account, or publish it to a hosted `*.onepageapps.gic.mx` URL.</p>
+              <p>Deploy with your own Cloudflare account, or publish instantly with GIC hosting — no signup required for either.</p>
             </div>
 
             <div id="ai-only-deploy-details" class="hidden text-sm leading-relaxed text-slate-600 dark:text-slate-400">
@@ -540,31 +533,27 @@
             </div>
 
             <div id="deploy-actions" class="mt-6 flex flex-col gap-3">
+              <button id="deploy-gic-btn" type="button" class="btn-primary w-full">
+                <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                <span>Deploy with GIC Hosting</span>
+              </button>
+              <button id="deploy-byo-btn" type="button" class="btn-outline w-full">
+                <span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+                <span>Deploy to My Cloudflare</span>
+              </button>
               <button id="copy-script-btn" type="button" class="btn-outline w-full">
                 <span class="material-symbols-outlined text-[20px]">content_copy</span>
                 <span>Copy Script</span>
               </button>
-              <button id="deploy-byo-btn" type="button" class="btn-primary w-full">
-                <span class="material-symbols-outlined text-[20px]">cloud_upload</span>
-                <span>Deploy to My Cloudflare</span>
-              </button>
-              <button id="deploy-gic-btn" type="button" class="btn-outline w-full">
-                <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
-                <span>Deploy with GIC Hosting</span>
-              </button>
-              <a id="deploy-dashboard-link" href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="btn-primary w-full">
-                <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
-                <span>Open Cloudflare Dashboard →</span>
-              </a>
-              <a id="deploy-source-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-outline w-full">
-                <span class="material-symbols-outlined text-[20px]">code</span>
-                <span>View Source on GitHub →</span>
-              </a>
             </div>
 
             <div id="deploy-status" class="mt-5 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400">
               Deploy results will appear here.
             </div>
+            <a id="deploy-source-link" href="#" target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-orange-600">
+              <span class="material-symbols-outlined text-[20px]">code</span>
+              <span>View Source on GitHub →</span>
+            </a>
           </section>
 
           <section class="surface-card p-6">
@@ -575,7 +564,7 @@
                 <dd class="mt-1 font-semibold text-slate-900 dark:text-slate-100"><a id="info-category-link" href="#" class="transition-colors hover:text-primary">—</a></dd>
               </div>
               <div>
-                <dt class="text-slate-500 dark:text-slate-400">Worker Script</dt>
+                <dt class="text-slate-500 dark:text-slate-400">Source File</dt>
                 <dd id="info-worker-script" class="mt-1 font-mono text-slate-900 dark:text-slate-100">—</dd>
               </div>
               <div>
@@ -963,7 +952,7 @@
       $('ai-only-deploy-details').classList.toggle('hidden', !isAiOnly);
       $('ai-only-deploy-link').href = generateHref;
       $('deploy-actions').classList.toggle('hidden', isAiOnly);
-      ['copy-script-btn', 'deploy-byo-btn', 'deploy-gic-btn', 'deploy-source-link', 'deploy-dashboard-link'].forEach((id) => {
+      ['copy-script-btn', 'deploy-byo-btn', 'deploy-gic-btn', 'deploy-source-link'].forEach((id) => {
         $(id).classList.toggle('hidden', isAiOnly);
       });
       $('deploy-status').classList.toggle('hidden', isAiOnly);
@@ -1098,7 +1087,7 @@
       const title = needsKeys ? 'Demo Requires API Keys' : 'Demo Unavailable';
       const body = needsKeys
         ? `This app likely needs runtime secrets before its live UI can work. Configure ${escapeHtml((app.requiredKeys || ['AI / provider keys']).join(', '))} in Cloudflare Workers, then deploy the script to test the full experience.`
-        : 'We could not extract a self-contained HTML interface from the worker source. This template may expose only API endpoints or generate the UI dynamically at runtime.';
+        : 'We could not extract a self-contained HTML interface from this template\'s source. It may expose only API endpoints or generate the UI dynamically at runtime.';
       const icon = needsKeys ? 'vpn_key' : 'browser_not_supported';
       const subtle = reason ? `<p class="mt-2 text-xs text-slate-500 dark:text-slate-500">${escapeHtml(String(reason))}</p>` : '';
       $('demo-state').innerHTML = `
@@ -1138,7 +1127,7 @@
           <span class="material-symbols-outlined animate-spin text-2xl">progress_activity</span>
         </div>
         <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Loading demo</h3>
-        <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Fetching the worker script and looking for embedded HTML…</p>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Fetching the app source and looking for embedded HTML…</p>
       `;
       try {
         const source = await fetchScript(app);
@@ -1149,7 +1138,7 @@
         }
         renderDemoFrame(app, html);
       } catch (error) {
-        renderDemoFallback(app, error?.message || 'Unable to fetch the worker source.');
+        renderDemoFallback(app, error?.message || 'Unable to fetch the template source.');
       }
     }
 
@@ -1278,7 +1267,7 @@
       };
 
       window.OnePageAppsBridge.setCloudflareDraft(payload);
-      setDeployStatus('Loading worker source and sending deploy request…', 'neutral', 'deploy-modal-status');
+      setDeployStatus('Loading template source and sending deploy request…', 'neutral', 'deploy-modal-status');
 
       try {
         payload.workerJs = await fetchScript(currentApp);
