@@ -91,9 +91,9 @@
             <span class="material-symbols-outlined text-[16px]">auto_awesome</span>
             AI app generator
           </div>
-          <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Describe an app. Get deployable Worker code.</h1>
+          <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Describe an app. Get a deployable app in minutes.</h1>
           <p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">
-            Start from a prompt, seed from an existing template, validate the generated Worker, and deploy it either to your own Cloudflare account or with GIC-hosted publishing.
+            Start from a prompt, seed from an existing template, validate the generated app, and deploy it either to your own Cloudflare account or with GIC-hosted publishing.
           </p>
         </div>
       </div>
@@ -163,7 +163,7 @@
           </div>
 
           <div id="validation-result" class="mt-6 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-5 py-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400">
-            Validate your generated Worker to check for unsafe patterns, missing handlers, and syntax-level issues.
+            Validate your generated app to check for unsafe patterns, missing handlers, and syntax-level issues.
           </div>
 
           <div id="stream-status" class="mt-4 text-sm text-slate-500 dark:text-slate-400"></div>
@@ -172,7 +172,7 @@
         <section class="surface-card p-6 sm:p-8">
           <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Worker editor</h2>
+              <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">App code</h2>
               <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Generated code stays in `sessionStorage` on this device until you close the tab session.</p>
             </div>
             <label class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3.5 py-2 text-sm font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-200">
@@ -181,7 +181,7 @@
             </label>
           </div>
 
-          <textarea id="code-output" class="code-editor w-full rounded-2xl border border-slate-200 bg-slate-950 px-4 py-4 text-sm leading-6 text-slate-100 outline-none transition focus:border-primary dark:border-slate-700" readonly placeholder="// Your generated Cloudflare Worker will appear here."></textarea>
+          <textarea id="code-output" class="code-editor w-full rounded-2xl border border-slate-200 bg-slate-950 px-4 py-4 text-sm leading-6 text-slate-100 outline-none transition focus:border-primary dark:border-slate-700" readonly placeholder="// Your generated app code will appear here."></textarea>
 
           <div class="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
             <label for="instruction-input" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Refine with an instruction</label>
@@ -206,7 +206,7 @@
 
             <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-900">
               <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Deploy with GIC Hosting</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Publish to a `{slug}.onepageapps.gic.mx` URL. Free tier gets 1 active 7-day app. Pro unlocks 10 permanent apps.</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Publish to a `{slug}.onepageapps.gic.mx` URL — free during V1.</p>
               <button id="deploy-gic-btn" type="button" class="btn-primary mt-5 w-full">
                 <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
                 Deploy with GIC
@@ -352,7 +352,7 @@
         ? 'Business plan detected. You have unlimited GIC AI generations, unlimited hosted apps, and API access.'
         : tier === 'pro'
           ? 'Pro plan detected. You have unlimited GIC AI generations and up to 10 permanent hosted apps.'
-          : 'Free tier: you can use your own LLM key anytime, or use GIC AI for up to 5 generations per month after logging in. Paid checkout returns a JWT that unlocks Pro or Business.';
+          : 'Free tier: you can use your own LLM key anytime, or use GIC AI for up to 5 generations per month after logging in.';
       $('auth-banner').innerHTML = `
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -473,7 +473,7 @@
 
       toggleBusy(true);
       setStatus('Generating…', 'working');
-      setStreamMessage('Connecting to the bridge worker…');
+      setStreamMessage('Connecting to the deploy service…');
       let buffer = endpoint.includes('/edit') ? currentScript() : '';
       if (!endpoint.includes('/edit')) updateEditor('');
 
@@ -513,7 +513,7 @@
 
     async function handleValidate() {
       if (!currentScript()) {
-        setValidationMessage('Generate or paste Worker code before validating it.', 'danger');
+        setValidationMessage('Generate or paste app code before validating it.', 'danger');
         return;
       }
 
@@ -522,7 +522,7 @@
         const result = await bridge.validateWorker(currentScript());
         const errors = Array.isArray(result.errors) ? result.errors : [];
         if (result.valid) {
-          setValidationMessage(`<div class="font-semibold">Validation passed.</div><div class="mt-1">The Worker includes the required request handler shape and no disallowed patterns were detected.</div>`, 'success');
+          setValidationMessage(`<div class="font-semibold">Validation passed.</div><div class="mt-1">The app includes the required request handler shape and no disallowed patterns were detected.</div>`, 'success');
         } else {
           setValidationMessage(`<div class="font-semibold">Validation failed.</div><ul class="mt-3 list-disc space-y-1 pl-5">${errors.map((item) => `<li>${item}</li>`).join('')}</ul>`, 'danger');
         }
@@ -554,7 +554,7 @@
         bridge.track('app_deploy_byo', { source: 'generate' });
         setDeployMessage(`
           <div class="font-semibold">BYO deploy request completed.</div>
-          <div class="mt-1">Cloudflare response was returned by the bridge worker.</div>
+          <div class="mt-1">Cloudflare response was returned.</div>
           <pre class="mt-3 overflow-x-auto rounded-2xl bg-slate-950 px-4 py-3 text-xs text-slate-100">${JSON.stringify(result, null, 2)}</pre>
         `, 'success');
         closeByoModal();
@@ -669,7 +669,7 @@
       if (savedScript) {
         updateEditor(savedScript);
         setStatus('Draft restored', 'success');
-        setStreamMessage('Recovered your last generated Worker from this browser session.', 'success');
+        setStreamMessage('Recovered your last generated app from this browser session.', 'success');
       }
     }
 
