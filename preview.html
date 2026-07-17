@@ -433,7 +433,7 @@
     <section id="app-content" class="hidden space-y-10">
       <div class="grid gap-8 lg:grid-cols-5 lg:items-start">
         <div class="space-y-6 lg:col-span-3">
-          <section class="surface-card p-6 sm:p-8">
+          <section id="live-demo-section" class="surface-card p-6 sm:p-8">
             <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
               <div class="flex items-start gap-4 sm:gap-5">
                 <div class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary dark:bg-primary/15">
@@ -479,6 +479,17 @@
             </div>
           </section>
 
+          <section id="ai-only-demo-notice" class="hidden surface-card p-6 sm:p-8">
+            <div class="rounded-2xl border border-primary/20 bg-primary/5 p-6 text-center dark:bg-primary/10">
+              <span class="material-symbols-outlined text-3xl text-primary">auto_awesome</span>
+              <h2 class="mt-3 text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">This app is generated with AI — no fixed source exists yet.</h2>
+              <a id="ai-only-demo-link" href="#" class="btn-primary mt-5 inline-flex">
+                <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+                <span>Generate this app</span>
+              </a>
+            </div>
+          </section>
+
           <section id="help-section" class="hidden surface-card p-6 sm:p-8">
             <div class="mb-5 flex items-center gap-3">
               <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary dark:bg-primary/15">
@@ -508,7 +519,7 @@
               </div>
             </div>
 
-            <div class="space-y-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+            <div id="deploy-static-details" class="space-y-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
               <p>Use the preview as your deploy launchpad: copy the script, send it to your own Cloudflare account, or publish it to a hosted `*.onepageapps.gic.mx` URL when your plan allows it.</p>
               <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/50">
                 <div class="font-semibold text-slate-900 dark:text-slate-100">Best path for free users</div>
@@ -520,7 +531,15 @@
               </div>
             </div>
 
-            <div class="mt-6 flex flex-col gap-3">
+            <div id="ai-only-deploy-details" class="hidden text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              <p>This app is generated with AI, so there is no fixed source to deploy yet.</p>
+              <a id="ai-only-deploy-link" href="#" class="btn-primary mt-5 w-full">
+                <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+                <span>Generate this app</span>
+              </a>
+            </div>
+
+            <div id="deploy-actions" class="mt-6 flex flex-col gap-3">
               <button id="copy-script-btn" type="button" class="btn-outline w-full">
                 <span class="material-symbols-outlined text-[20px]">content_copy</span>
                 <span>Copy Script</span>
@@ -533,7 +552,7 @@
                 <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
                 <span>Deploy with GIC Hosting</span>
               </button>
-              <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="btn-primary w-full">
+              <a id="deploy-dashboard-link" href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="btn-primary w-full">
                 <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
                 <span>Open Cloudflare Dashboard →</span>
               </a>
@@ -563,7 +582,7 @@
                 <dt class="text-slate-500 dark:text-slate-400">Script Path</dt>
                 <dd id="info-script-path" class="mt-1 break-all font-mono text-slate-900 dark:text-slate-100">—</dd>
               </div>
-              <div>
+              <div id="info-history-row">
                 <dt class="text-slate-500 dark:text-slate-400">Last updated</dt>
                 <dd class="mt-1 text-slate-900 dark:text-slate-100"><a id="info-history-link" href="#" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-primary">See GitHub for history</a></dd>
               </div>
@@ -919,18 +938,36 @@
 
     function populateSidebar(app) {
       const categoryHref = categoryUrl(app);
-      const sourceHref = githubBlobUrl(app.scriptPath);
-      const historyHref = githubHistoryUrl(app.scriptPath);
+      const hasStaticScript = app.hasStaticScript !== false;
+      const sourceHref = hasStaticScript ? githubBlobUrl(app.scriptPath) : '#';
+      const historyHref = hasStaticScript ? githubHistoryUrl(app.scriptPath) : '#';
       const appUrl = previewUrl(app.id);
       $('deploy-source-link').href = sourceHref;
       $('info-category-link').textContent = app.categoryDisplay;
       $('info-category-link').href = categoryHref;
-      $('info-worker-script').textContent = `${app.workerScriptName}.js`;
-      $('info-script-path').textContent = app.scriptPath;
+      $('info-worker-script').textContent = hasStaticScript ? `${app.workerScriptName}.js` : 'Generated on demand';
+      $('info-script-path').textContent = hasStaticScript ? app.scriptPath : 'Generated on demand';
       $('info-history-link').href = historyHref;
       $('share-twitter-link').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`Check out ${app.name} on One-Page Apps`)}&url=${encodeURIComponent(appUrl)}`;
       $('copy-url-btn').dataset.copyText = appUrl;
-      $('copy-script-btn').dataset.scriptPath = app.scriptPath;
+      $('copy-script-btn').dataset.scriptPath = hasStaticScript ? app.scriptPath : '';
+    }
+
+    function configureAiOnlyUi(app) {
+      const isAiOnly = app.hasStaticScript === false;
+      const generateHref = `generate.html?seed=${encodeURIComponent(app.id)}`;
+      $('live-demo-section').classList.toggle('hidden', isAiOnly);
+      $('ai-only-demo-notice').classList.toggle('hidden', !isAiOnly);
+      $('ai-only-demo-link').href = generateHref;
+      $('deploy-static-details').classList.toggle('hidden', isAiOnly);
+      $('ai-only-deploy-details').classList.toggle('hidden', !isAiOnly);
+      $('ai-only-deploy-link').href = generateHref;
+      $('deploy-actions').classList.toggle('hidden', isAiOnly);
+      ['copy-script-btn', 'deploy-byo-btn', 'deploy-gic-btn', 'deploy-source-link', 'deploy-dashboard-link'].forEach((id) => {
+        $(id).classList.toggle('hidden', isAiOnly);
+      });
+      $('deploy-status').classList.toggle('hidden', isAiOnly);
+      $('info-history-row').classList.toggle('hidden', isAiOnly);
     }
 
     function renderRelated(app, apps) {
@@ -1377,6 +1414,7 @@
         populateMeta(app);
         populateHeader(app);
         populateSidebar(app);
+        configureAiOnlyUi(app);
         renderRelated(app, data.apps || []);
         window.OnePageAppsShared.track('app_view', {
           app_id: app.id,
@@ -1384,7 +1422,9 @@
           category: app.category
         });
         showContent();
-        void tryLoadDemo(app);
+        if (app.hasStaticScript !== false) {
+          void tryLoadDemo(app);
+        }
         if (app.hasHelp) {
           void loadHelp(app);
         } else {

@@ -627,10 +627,13 @@
       }
     }
 
+    let catalogApps = [];
+
     async function populateTemplates() {
       try {
         const payload = await shared.fetchAppsIndex('/docs/apps-index.json');
         const apps = Array.isArray(payload.apps) ? payload.apps : [];
+        catalogApps = apps;
         $('template-select').innerHTML = ['<option value="">Start from scratch</option>']
           .concat(apps.slice().sort((a, b) => a.name.localeCompare(b.name)).map((app) => {
             return `<option value="${app.id}">${app.name} — ${app.categoryDisplay || app.category}</option>`;
@@ -639,6 +642,15 @@
       } catch (error) {
         $('stream-status').textContent = 'App templates could not be loaded right now.';
       }
+    }
+
+    function applySeedFromQuery() {
+      const seedId = new URLSearchParams(window.location.search).get('seed');
+      const hasOption = Array.from($('template-select').options).some((option) => option.value === seedId);
+      if (!seedId || !hasOption) return;
+      $('template-select').value = seedId;
+      const app = catalogApps.find((item) => item.id === seedId);
+      if (app && !$('prompt-input').value.trim()) $('prompt-input').value = app.description || '';
     }
 
     function restoreDrafts() {
@@ -695,7 +707,7 @@
     updateAuthBanner();
     restoreDrafts();
     bindEvents();
-    populateTemplates();
+    populateTemplates().then(applySeedFromQuery);
     shared.track('generate_cta_click', { source: 'generate-page-load' });
   </script>
 </body>

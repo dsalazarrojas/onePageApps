@@ -706,8 +706,22 @@
         const description = escapeHtml(app.description || '');
         const categoryLabel = escapeHtml(getCategoryLabel(app));
         const icon = escapeHtml(getSystemIcon(app.systemImage));
+        const isAiOnly = app.hasStaticScript === false;
         const previewUrl = `preview.html?id=${encodeURIComponent(app.id)}`;
-        const helpUrl = `preview.html?id=${encodeURIComponent(app.id)}#help`;
+        const generateUrl = `generate.html?seed=${encodeURIComponent(app.id)}`;
+        const primaryUrl = isAiOnly ? generateUrl : previewUrl;
+        const primaryLabel = isAiOnly ? 'Generate' : 'Preview';
+        const primaryIcon = isAiOnly ? 'auto_awesome' : 'visibility';
+        const deployButton = isAiOnly ? '' : `
+              <button type="button" class="deploy-app-btn relative z-10 inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:border-primary/30 hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors" data-app-id="${escapeHtml(app.id)}">
+                <span class="material-symbols-outlined text-[16px]">cloud_upload</span>
+                Deploy
+              </button>`;
+        const helpButton = isAiOnly ? '' : `
+              <a href="preview.html?id=${encodeURIComponent(app.id)}#help" class="relative z-10 inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:border-primary/30 hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors" aria-label="Open help for ${name}">
+                <span class="material-symbols-outlined text-[16px]">menu_book</span>
+                Help
+              </a>`;
         const keyBadges = Array.isArray(app.requiredKeys) && app.requiredKeys.length
           ? `<span class="inline-flex items-center gap-1 rounded-full bg-orange-100 text-orange-700 dark:bg-orange-500/15 dark:text-orange-300 px-2.5 py-1 text-[11px] font-semibold">Needs: ${escapeHtml(app.requiredKeys.join(', '))}</span>`
           : '';
@@ -723,7 +737,7 @@
 
         return `
           <article class="group relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/70 dark:hover:shadow-slate-950/70 hover:border-primary/30 transition-all duration-200 cursor-pointer focus-within:ring-2 focus-within:ring-primary/40"
-            data-card-link="${escapeHtml(previewUrl)}" tabindex="0" role="link" aria-label="Open preview for ${name}">
+            data-card-link="${escapeHtml(primaryUrl)}" tabindex="0" role="link" aria-label="Open ${primaryLabel.toLowerCase()} for ${name}">
             <div class="flex items-start gap-4 mb-4">
               <div class="h-12 w-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <span class="material-symbols-outlined text-[24px]">${icon}</span>
@@ -745,18 +759,12 @@
             </div>
 
             <div class="flex items-center gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
-              <a href="${escapeHtml(previewUrl)}" class="relative z-10 inline-flex items-center justify-center gap-1.5 flex-1 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">
-                <span class="material-symbols-outlined text-[16px]">visibility</span>
-                Preview
+              <a href="${escapeHtml(primaryUrl)}" class="relative z-10 inline-flex items-center justify-center gap-1.5 flex-1 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-600 transition-colors">
+                <span class="material-symbols-outlined text-[16px]">${primaryIcon}</span>
+                ${primaryLabel}
               </a>
-              <button type="button" class="deploy-app-btn relative z-10 inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:border-primary/30 hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors" data-app-id="${escapeHtml(app.id)}">
-                <span class="material-symbols-outlined text-[16px]">cloud_upload</span>
-                Deploy
-              </button>
-              <a href="${escapeHtml(helpUrl)}" class="relative z-10 inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:border-primary/30 hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors" aria-label="Open help for ${name}">
-                <span class="material-symbols-outlined text-[16px]">menu_book</span>
-                Help
-              </a>
+              ${deployButton}
+              ${helpButton}
             </div>
           </article>
         `;

@@ -88,17 +88,12 @@ function main() {
     localHelps: 0,
     fallbackHelps: 0,
     appsWithoutHelp: 0,
-    skippedWithoutWorkerScript: 0,
+    aiOnlyTemplates: 0,
   };
 
   const apps = [];
 
   for (const template of parsedTemplates) {
-    if (!template.workerScriptName) {
-      summary.skippedWithoutWorkerScript += 1;
-      continue;
-    }
-
     const categoryInfo = CATEGORY_MAP[template.category];
     if (!categoryInfo) {
       categoryErrors.push(
@@ -107,21 +102,30 @@ function main() {
       continue;
     }
 
-    const relativeScriptPath = toPosixPath(categoryInfo.slug, `${template.workerScriptName}.js`);
-    const localScriptPath = path.join(repoRoot, relativeScriptPath);
-    const fallbackScriptPath = path.join(companionTemplatesDir, `${template.workerScriptName}.js`);
-    const scriptLocation = resolveContent({
-      localPath: localScriptPath,
-      fallbackPath: fallbackScriptPath,
-      label: `script for "${template.name}"`,
-      strictLocalOnly: options.strictLocalOnly,
-      missingContent,
-    });
+    const hasStaticScript = Boolean(template.workerScriptName);
+    const relativeScriptPath = hasStaticScript
+      ? toPosixPath(categoryInfo.slug, `${template.workerScriptName}.js`)
+      : null;
+    let scriptLocation = { source: "ai-only", resolvedPath: null };
 
-    if (scriptLocation.source === "local") {
-      summary.localScripts += 1;
-    } else if (scriptLocation.source === "fallback") {
-      summary.fallbackScripts += 1;
+    if (hasStaticScript) {
+      const localScriptPath = path.join(repoRoot, relativeScriptPath);
+      const fallbackScriptPath = path.join(companionTemplatesDir, `${template.workerScriptName}.js`);
+      scriptLocation = resolveContent({
+        localPath: localScriptPath,
+        fallbackPath: fallbackScriptPath,
+        label: `script for "${template.name}"`,
+        strictLocalOnly: options.strictLocalOnly,
+        missingContent,
+      });
+
+      if (scriptLocation.source === "local") {
+        summary.localScripts += 1;
+      } else if (scriptLocation.source === "fallback") {
+        summary.fallbackScripts += 1;
+      }
+    } else {
+      summary.aiOnlyTemplates += 1;
     }
 
     const helpStem = template.helpDocumentName || `${template.workerScriptName}_help`;
@@ -157,7 +161,7 @@ function main() {
     }
 
     apps.push({
-      id: `${template.workerScriptName}--${categoryInfo.slug}`.toLowerCase(),
+      id: `${template.workerScriptName || slugify(template.name)}--${categoryInfo.slug}`.toLowerCase(),
       name: template.name,
       category: categoryInfo.slug,
       categoryDisplay: categoryInfo.display,
@@ -165,6 +169,7 @@ function main() {
       systemImage: template.systemImage,
       workerScriptName: template.workerScriptName,
       scriptPath: relativeScriptPath,
+      hasStaticScript,
       helpPath,
       hasHelp,
       requiresAI: template.requiresAI,
@@ -191,7 +196,7 @@ function main() {
     return (
       left.category.localeCompare(right.category) ||
       left.name.localeCompare(right.name) ||
-      left.workerScriptName.localeCompare(right.workerScriptName)
+      (left.workerScriptName || "").localeCompare(right.workerScriptName || "")
     );
   });
 
@@ -214,7 +219,7 @@ function main() {
     `Generated ${apps.length} app index entries from ${summary.parsedTemplates} AppTemplate records.`,
     `Scripts validated: ${summary.localScripts} local, ${summary.fallbackScripts} companion fallback.`,
     `Help files validated: ${summary.localHelps} local, ${summary.fallbackHelps} companion fallback, ${summary.appsWithoutHelp} without help docs.`,
-    `Skipped ${summary.skippedWithoutWorkerScript} templates without workerScriptName.`,
+    `AI-only templates included (no static script, seed-from-existing in generate.html): ${summary.aiOnlyTemplates}.`,
     `Wrote docs/apps-index.json, docs/apps-index.json.gz, and docs/last_updated.txt.`,
   ];
 
@@ -302,6 +307,13 @@ function ensureDir(dirPath) {
 
 function toPosixPath(...parts) {
   return parts.join("/").replace(/\/+/g, "/");
+}
+
+function slugify(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 function parseTemplatesFromModels(swiftSource) {
