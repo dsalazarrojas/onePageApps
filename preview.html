@@ -1277,7 +1277,7 @@
         window.OnePageAppsShared.track('app_deploy_gic', { source: 'preview', app_id: currentApp.id });
         setDeployStatus(`
           <div class="font-semibold">Hosted deployment created.</div>
-          <div class="mt-2">URL: <a class="font-semibold underline" href="${result.url}" target="_blank" rel="noopener">${result.url}</a></div>
+          <div class="mt-2">Your app is live at <a class="font-semibold underline" href="${result.url}" target="_blank" rel="noopener">${result.url}</a>. It may take a few minutes for the link to start working while Cloudflare finishes setting it up.</div>
           ${result.expiresAt ? `<div class="mt-1">Expires: ${escapeHtml(result.expiresAt)}</div>` : ''}
         `, 'success');
       } catch (error) {
@@ -1286,7 +1286,7 @@
           window.location.href = checkoutUrl;
           return;
         }
-        setDeployStatus(escapeHtml(error?.message || 'Hosted deploy failed.'), 'danger');
+        setDeployStatus(escapeHtml(window.OnePageAppsBridge.friendlyErrorMessage(error)), 'danger');
       } finally {
         $('deploy-gic-btn').disabled = false;
       }

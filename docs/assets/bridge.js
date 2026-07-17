@@ -26,6 +26,37 @@
     localStorage.removeItem(STORAGE_KEYS.jwt || 'opa-jwt');
   }
 
+  async function ensureAnonSession() {
+    const token = getJwt();
+    const payload = shared.getJwtPayload?.(token);
+    if (payload?.sub && Number(payload.exp) > (Date.now() / 1000) + 60) {
+      return token;
+    }
+
+    try {
+      const bridgeUrl = shared.requireBridgeUrl();
+      const response = await fetch(`${bridgeUrl}/auth/csrf`, { method: 'POST' });
+      const data = await response.json();
+      if (data?.anonToken) {
+        setJwt(data.anonToken);
+        return data.anonToken;
+      }
+    } catch (_) {
+      // Let the authenticated request surface its usual error to the caller.
+    }
+
+    return getJwt();
+  }
+
+  function friendlyErrorMessage(error) {
+    if (error?.status === 429) return "You're deploying too quickly — wait a moment and try again.";
+    if (error?.status === 402) return "You've reached the free plan's limit.";
+    if (error?.status === 401) return 'Your session expired — please try again.';
+    if (!error?.status) return "Couldn't reach the deploy service — check your connection and try again.";
+    const message = String(error?.message || '').trim();
+    return message && !message.startsWith('{') ? message : 'Deploy failed — please try again.';
+  }
+
   function getUserTier() {
     return shared.getUserTier?.(getJwt()) || 'free';
   }
@@ -128,6 +159,7 @@
   }
 
   async function streamJson(endpoint, body, handlers = {}) {
+    await ensureAnonSession();
     const bridgeUrl = shared.requireBridgeUrl();
     const response = await fetch(`${bridgeUrl}${endpoint}`, {
       method: 'POST',
@@ -197,6 +229,7 @@
   }
 
   async function deployGic(payload) {
+    await ensureAnonSession();
     return requestJson('/deploy/gic', {
       body: payload
     });
@@ -258,6 +291,8 @@
     getJwt,
     setJwt,
     clearJwt,
+    ensureAnonSession,
+    friendlyErrorMessage,
     getUserTier,
     getCloudflareDraft,
     setCloudflareDraft,
