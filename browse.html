@@ -208,47 +208,6 @@
     </section>
   </main>
 
-  <div id="deploy-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 px-4">
-    <div class="w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-slate-700 dark:bg-slate-900">
-      <div class="mb-5 flex items-start justify-between gap-4">
-        <div>
-          <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Deploy to My Cloudflare</h2>
-          <p id="deploy-modal-copy" class="mt-1 text-sm text-slate-600 dark:text-slate-400">Load a script from the browse page and deploy it with your own account.</p>
-        </div>
-        <button id="close-deploy-modal" type="button" class="rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
-          <span class="material-symbols-outlined text-[20px]">close</span>
-        </button>
-      </div>
-
-      <div class="grid gap-4">
-        <div>
-          <label for="deploy-account-id" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Cloudflare Account ID</label>
-          <input id="deploy-account-id" type="text" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="32-char account id" />
-        </div>
-        <div>
-          <label for="deploy-api-token" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Cloudflare API token</label>
-          <input id="deploy-api-token" type="password" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="Workers Scripts:Edit token" />
-        </div>
-        <div>
-          <label for="deploy-script-name" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Worker script name</label>
-          <input id="deploy-script-name" type="text" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="my-onepageapp-worker" />
-        </div>
-      </div>
-
-      <div id="deploy-modal-status" class="mt-5 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400">
-        Deployment results will appear here.
-      </div>
-
-      <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
-        <button id="cancel-deploy-modal" type="button" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-200">Cancel</button>
-        <button id="confirm-deploy-modal" type="button" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-600">
-          <span class="material-symbols-outlined text-[18px]">cloud_upload</span>
-          Deploy now
-        </button>
-      </div>
-    </div>
-  </div>
-
   <footer class="bg-slate-900 dark:bg-slate-950 text-white border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
@@ -364,7 +323,6 @@
     let filtered = [];
     let visibleCount = PAGE_SIZE;
     let totalApps = 199;
-    let selectedDeployApp = null;
 
     const elements = {};
 
@@ -661,40 +619,6 @@
       elements.clearFilters.classList.toggle('inline-flex', getActiveFilterCount() > 0);
     }
 
-    function setDeployModalStatus(html, tone = 'neutral') {
-      const palette = {
-        neutral: 'border-dashed border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400',
-        success: 'border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-500/25 dark:bg-emerald-500/10 dark:text-emerald-100',
-        danger: 'border-rose-200 bg-rose-50 text-rose-900 dark:border-rose-500/25 dark:bg-rose-500/10 dark:text-rose-100'
-      };
-      elements.deployModalStatus.className = `mt-5 rounded-2xl border px-4 py-3 text-sm ${palette[tone] || palette.neutral}`;
-      elements.deployModalStatus.innerHTML = html;
-    }
-
-    function openDeployModal(app) {
-      selectedDeployApp = app;
-      const draft = window.OnePageAppsBridge.getCloudflareDraft();
-      elements.deployAccountId.value = draft.cfAccountId || '';
-      elements.deployApiToken.value = draft.cfApiToken || '';
-      elements.deployScriptName.value = draft.scriptName || app.workerScriptName || app.id.replace(/[^a-z0-9-]/gi, '-').toLowerCase();
-      elements.deployModalCopy.textContent = `Deploy ${app.name} to your own Cloudflare Workers account.`;
-      setDeployModalStatus('Deployment results will appear here.');
-      elements.deployModal.classList.remove('hidden');
-      elements.deployModal.classList.add('flex');
-    }
-
-    function closeDeployModal() {
-      elements.deployModal.classList.add('hidden');
-      elements.deployModal.classList.remove('flex');
-    }
-
-    async function fetchScriptSource(app) {
-      return window.OnePageAppsShared.fetchFromCandidates([
-        absoluteLocalPath(app.scriptPath),
-        githubRawUrl(app.scriptPath)
-      ], 'text');
-    }
-
     function renderCards(apps) {
       if (!apps.length) {
         renderEmptyState();
@@ -712,16 +636,6 @@
         const primaryUrl = isAiOnly ? generateUrl : previewUrl;
         const primaryLabel = isAiOnly ? 'Generate' : 'Preview';
         const primaryIcon = isAiOnly ? 'auto_awesome' : 'visibility';
-        const deployButton = isAiOnly ? '' : `
-              <button type="button" class="deploy-app-btn relative z-10 inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:border-primary/30 hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors" data-app-id="${escapeHtml(app.id)}">
-                <span class="material-symbols-outlined text-[16px]">cloud_upload</span>
-                Deploy
-              </button>`;
-        const helpButton = isAiOnly ? '' : `
-              <a href="preview.html?id=${encodeURIComponent(app.id)}#help" class="relative z-10 inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:border-primary/30 hover:text-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors" aria-label="Open help for ${name}">
-                <span class="material-symbols-outlined text-[16px]">menu_book</span>
-                Help
-              </a>`;
         const keyBadges = Array.isArray(app.requiredKeys) && app.requiredKeys.length
           ? `<span class="inline-flex items-center gap-1 rounded-full bg-orange-100 text-orange-700 dark:bg-orange-500/15 dark:text-orange-300 px-2.5 py-1 text-[11px] font-semibold">Needs: ${escapeHtml(app.requiredKeys.join(', '))}</span>`
           : '';
@@ -763,8 +677,6 @@
                 <span class="material-symbols-outlined text-[16px]">${primaryIcon}</span>
                 ${primaryLabel}
               </a>
-              ${deployButton}
-              ${helpButton}
             </div>
           </article>
         `;
@@ -784,16 +696,6 @@
         });
       });
 
-      document.querySelectorAll('.deploy-app-btn').forEach((button) => {
-        button.addEventListener('click', (event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          const app = allApps.find((item) => item.id === button.dataset.appId);
-          if (!app) return;
-          window.OnePageAppsShared.track('deploy_cta_click', { source: 'browse', app_id: app.id, type: 'byo' });
-          openDeployModal(app);
-        });
-      });
     }
 
     function renderLoadMore() {
@@ -963,41 +865,6 @@
         });
       }
 
-      elements.closeDeployModal.addEventListener('click', closeDeployModal);
-      elements.cancelDeployModal.addEventListener('click', closeDeployModal);
-      elements.deployModal.addEventListener('click', (event) => {
-        if (event.target === elements.deployModal) closeDeployModal();
-      });
-      elements.confirmDeployModal.addEventListener('click', async () => {
-        if (!selectedDeployApp) return;
-
-        const payload = {
-          cfAccountId: elements.deployAccountId.value.trim(),
-          cfApiToken: elements.deployApiToken.value.trim(),
-          scriptName: elements.deployScriptName.value.trim(),
-          workerJs: '',
-          secrets: {}
-        };
-
-        window.OnePageAppsBridge.setCloudflareDraft(payload);
-        setDeployModalStatus('Loading worker source and sending deploy request…');
-        elements.confirmDeployModal.disabled = true;
-
-        try {
-          payload.workerJs = await fetchScriptSource(selectedDeployApp);
-          const result = await window.OnePageAppsBridge.deployByo(payload);
-          window.OnePageAppsShared.track('app_deploy_byo', { source: 'browse', app_id: selectedDeployApp.id });
-          setDeployModalStatus(`
-            <div class="font-semibold">Deploy request completed for ${escapeHtml(selectedDeployApp.name)}.</div>
-            <pre class="mt-3 overflow-x-auto rounded-2xl bg-slate-950 px-4 py-3 text-xs text-slate-100">${JSON.stringify(result, null, 2)}</pre>
-          `, 'success');
-        } catch (error) {
-          setDeployModalStatus(escapeHtml(error.message || 'Deploy failed.'), 'danger');
-        } finally {
-          elements.confirmDeployModal.disabled = false;
-        }
-      });
-
       window.addEventListener('hashchange', () => {
         readHash();
         syncControlsFromState();
@@ -1020,16 +887,7 @@
         appsGrid: document.getElementById('apps-grid'),
         loadMoreWrap: document.getElementById('load-more-wrap'),
         heroCountBadge: document.getElementById('hero-count-badge'),
-        themeToggle: document.getElementById('theme-toggle'),
-        deployModal: document.getElementById('deploy-modal'),
-        deployModalCopy: document.getElementById('deploy-modal-copy'),
-        deployModalStatus: document.getElementById('deploy-modal-status'),
-        closeDeployModal: document.getElementById('close-deploy-modal'),
-        cancelDeployModal: document.getElementById('cancel-deploy-modal'),
-        confirmDeployModal: document.getElementById('confirm-deploy-modal'),
-        deployAccountId: document.getElementById('deploy-account-id'),
-        deployApiToken: document.getElementById('deploy-api-token'),
-        deployScriptName: document.getElementById('deploy-script-name')
+        themeToggle: document.getElementById('theme-toggle')
       });
 
       buildCategoryOptions();
