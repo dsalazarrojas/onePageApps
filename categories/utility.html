@@ -11,12 +11,12 @@
   <meta property="og:title"       content="Utility Apps — 8 Free One-Page Apps" />
   <meta property="og:description" content="General-purpose utility apps for everyday web tasks, automation, sharing, and operational helpers. Browse 8 free one-page Utility apps you can deploy to Cloudflare Workers in seconds." />
   <meta property="og:url"         content="https://onePageApps.gic.mx/categories/utility.html" />
-  <meta property="og:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta property="og:image"       content="https://onePageApps.gic.mx/assets/social-preview.svg" />
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Utility Apps — 8 Free One-Page Apps" />
   <meta name="twitter:description" content="General-purpose utility apps for everyday web tasks, automation, sharing, and operational helpers. Browse 8 free one-page Utility apps you can deploy to Cloudflare Workers in seconds." />
-  <meta name="twitter:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta name="twitter:image"       content="https://onePageApps.gic.mx/assets/social-preview.svg" />
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{primary:'#ec5b13'}}}}</script>
@@ -42,6 +42,7 @@
       <nav class="hidden md:flex items-center gap-6 text-sm">
       <a href="https://onePageApps.gic.mx/" class="text-gray-600 hover:text-primary transition-colors">Home</a>
       <a href="https://onePageApps.gic.mx/browse.html" class="text-gray-600 hover:text-primary transition-colors">Browse</a>
+      <a href="https://onePageApps.gic.mx/generate.html" class="text-gray-600 hover:text-primary transition-colors">Generate</a>
       <a href="https://onePageApps.gic.mx/categories/" class="text-gray-600 hover:text-primary transition-colors">Categories</a>
       <a href="https://onePageApps.gic.mx/about.html" class="text-gray-600 hover:text-primary transition-colors">About</a>
       </nav>
@@ -101,15 +102,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">API Gateway</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Create secure API proxies to hide your keys.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=api_gateway--utility"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=api_gateway--utility"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=api_gateway--utility#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -120,15 +127,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Contact Form Forwarder</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">A customizable contact form that emails you results and posts to Slack, Discord, or any webhook.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=contact_form_webhook--utility"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=contact_form_webhook--utility"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=contact_form_webhook--utility#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -139,15 +152,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Encode / Decode Tool</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Encode and decode text using base64, base64url, hex, URL encoding, uuencode, and common formats.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=encode_decode_tool--utility"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=encode_decode_tool--utility"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=encode_decode_tool--utility#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -158,15 +177,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Password Generator</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Generate secure, customizable passwords.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=password_generator--utility"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=password_generator--utility"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=password_generator--utility#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -177,15 +202,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">QR Code Generator</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Generate QR codes from text or URLs.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=qr_code_generator--utility"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=qr_code_generator--utility"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=qr_code_generator--utility#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -196,15 +227,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">URL Status Checker</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Check website availability from multiple regions.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=url_status_checker--utility"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=url_status_checker--utility"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=url_status_checker--utility#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -215,15 +252,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Waitlist &amp; Email Collector</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">A landing page that captures emails, sends a welcome email via Resend, and notifies you of new signups.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=waitlist_collector--utility"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=waitlist_collector--utility"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=waitlist_collector--utility#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -234,15 +277,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Web Scraper</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Extract data from websites using CSS selectors.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=web_scraper--utility"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=web_scraper--utility"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=web_scraper--utility#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
     </div>
 

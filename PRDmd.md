@@ -1,3 +1,8 @@
+> **SUPERSEDED by [`PRD_FOCUSED_ONEPAGEAPP_JOURNEY.md`](./PRD_FOCUSED_ONEPAGEAPP_JOURNEY.md)**
+> (2026-07-16). This document is kept for historical reference only; do not use it to plan new
+> work. See the focused PRD and its companion TODOs
+> (`TODO_WEB_V1_FOCUSED.md`, `../oneTimeUseWebApp/TODO_IOS_V1_FOCUSED.md`) instead.
+
 # PRD — onePageApps.gic.mx
 
 **Product:** One-Page Apps Showcase & Distribution Site  

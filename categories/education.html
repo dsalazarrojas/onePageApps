@@ -11,12 +11,12 @@
   <meta property="og:title"       content="Education Apps — 15 Free One-Page Apps" />
   <meta property="og:description" content="Learning, quiz, study, practice, and classroom-oriented tools. Browse 15 free one-page Education apps you can deploy to Cloudflare Workers in seconds." />
   <meta property="og:url"         content="https://onePageApps.gic.mx/categories/education.html" />
-  <meta property="og:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta property="og:image"       content="https://onePageApps.gic.mx/assets/social-preview.svg" />
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Education Apps — 15 Free One-Page Apps" />
   <meta name="twitter:description" content="Learning, quiz, study, practice, and classroom-oriented tools. Browse 15 free one-page Education apps you can deploy to Cloudflare Workers in seconds." />
-  <meta name="twitter:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta name="twitter:image"       content="https://onePageApps.gic.mx/assets/social-preview.svg" />
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{primary:'#ec5b13'}}}}</script>
@@ -42,6 +42,7 @@
       <nav class="hidden md:flex items-center gap-6 text-sm">
       <a href="https://onePageApps.gic.mx/" class="text-gray-600 hover:text-primary transition-colors">Home</a>
       <a href="https://onePageApps.gic.mx/browse.html" class="text-gray-600 hover:text-primary transition-colors">Browse</a>
+      <a href="https://onePageApps.gic.mx/generate.html" class="text-gray-600 hover:text-primary transition-colors">Generate</a>
       <a href="https://onePageApps.gic.mx/categories/" class="text-gray-600 hover:text-primary transition-colors">Categories</a>
       <a href="https://onePageApps.gic.mx/about.html" class="text-gray-600 hover:text-primary transition-colors">About</a>
       </nav>
@@ -103,15 +104,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Code Snippet</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Syntax-highlighted code block with copy, line numbers</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_code_snippet_highlighter--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_code_snippet_highlighter--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_code_snippet_highlighter--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -122,15 +129,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Concept Map</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Node-edge graph from JSON (uses SVG force layout)</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=concept_map_generator_lite--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=concept_map_generator_lite--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=concept_map_generator_lite--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -141,15 +154,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Flashcard Widget</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Flip-card deck from JSON, progress tracked in KV</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_flashcard_widget--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_flashcard_widget--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_flashcard_widget--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -160,15 +179,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Formula Solver</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Evaluate math formulas with variable substitution</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=formula_solver_widget--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=formula_solver_widget--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=formula_solver_widget--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -179,15 +204,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Keyboard Shortcuts</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Interactive cheatsheet for any app (configurable JSON)</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_keyboard_shortcuts_cheat--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_keyboard_shortcuts_cheat--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_keyboard_shortcuts_cheat--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -198,15 +229,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Language Practice</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-purple-100 text-purple-700 rounded-full px-2 py-0.5 font-medium">AI</span></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span><span class="text-xs bg-purple-100 text-purple-700 rounded-full px-2 py-0.5 font-medium">AI</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Translate + pronounce a random word (uses OpenAI TTS)</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=language_practice_widget--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=language_practice_widget--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=language_practice_widget--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -217,15 +254,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Math Renderer</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Render LaTeX/MathML equations using KaTeX (inline)</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=math_equation_renderer--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=math_equation_renderer--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=math_equation_renderer--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -236,15 +279,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Mind Map</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Zoomable SVG mind map from JSON tree data</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=mindmap_simple_embed--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=mindmap_simple_embed--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=mindmap_simple_embed--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -255,15 +304,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Periodic Table</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Interactive periodic table element viewer</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_periodic_table--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_periodic_table--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_periodic_table--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -274,15 +329,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Quiz Builder</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Multiple choice quiz, scored, shareable link</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=quiz_builder_embed--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=quiz_builder_embed--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=quiz_builder_embed--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -293,15 +354,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Sticky Notes Widget</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Persistent notes tied to a URL key in KV</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_notes_widget_persistent--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_notes_widget_persistent--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_notes_widget_persistent--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -312,15 +379,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Study Timer</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Pomodoro embed widget with session log in KV</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=study_timer_pomodoro_embed--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=study_timer_pomodoro_embed--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=study_timer_pomodoro_embed--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -331,15 +404,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Timeline Builder</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Horizontal/vertical event timeline from JSON</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=timeline_builder_embed--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=timeline_builder_embed--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=timeline_builder_embed--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -350,15 +429,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Unit Converter Widget</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Compact embeddable version of unit_converter</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_unit_converter_widget--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_unit_converter_widget--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=embeddable_unit_converter_widget--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -369,15 +454,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Vocabulary Flashcards</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Front/back word cards with language tagging</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=vocabulary_flashcards--education"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=vocabulary_flashcards--education"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=vocabulary_flashcards--education#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
     </div>
 

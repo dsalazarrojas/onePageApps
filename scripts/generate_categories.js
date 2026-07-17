@@ -177,7 +177,7 @@ function gaSnippet() {
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');</script>`;
 }
 
-function htmlHead({ title, description, canonical, ogImage = BASE_URL + "/docs/assets/social-preview.png" }) {
+function htmlHead({ title, description, canonical, ogImage = BASE_URL + "/assets/social-preview.svg" }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -217,6 +217,7 @@ function navbar(activePath = "") {
   const links = [
     { href: BASE_URL + "/",               label: "Home"       },
     { href: BASE_URL + "/browse.html",    label: "Browse"     },
+    { href: BASE_URL + "/generate.html",  label: "Generate"   },
     { href: BASE_URL + "/categories/",    label: "Categories" },
     { href: BASE_URL + "/about.html",     label: "About"      },
   ];
@@ -265,11 +266,16 @@ function footer() {
 // ---------------------------------------------------------------------------
 function appCard(app) {
   const previewUrl = `${BASE_URL}/preview.html?id=${encodeURIComponent(app.id)}`;
+  const deployUrl = `${previewUrl}#deploy-panel`;
+  const isNew = app.addedAt && (Date.now() - Date.parse(app.addedAt) <= 30 * 24 * 60 * 60 * 1000);
   const aiLabel    = app.requiresAI
     ? `<span class="text-xs bg-purple-100 text-purple-700 rounded-full px-2 py-0.5 font-medium">AI</span>`
     : "";
   const dataLabel  = app.storesData
     ? `<span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span>`
+    : "";
+  const newLabel   = isNew
+    ? `<span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span>`
     : "";
   return `
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -280,15 +286,21 @@ function appCard(app) {
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">${escape(app.name)}</h3>
-                <div class="flex items-center gap-1.5 mt-0.5">${aiLabel}${dataLabel}</div>
+                <div class="flex items-center gap-1.5 mt-0.5">${newLabel}${aiLabel}${dataLabel}</div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">${escape(app.description)}</p>
-          <a href="${previewUrl}"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="${previewUrl}"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="${deployUrl}"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>`;
 }
 
@@ -460,6 +472,8 @@ function generateSitemap() {
   const staticUrls = [
     { loc: BASE_URL + "/",                  priority: "1.0", freq: "weekly"  },
     { loc: BASE_URL + "/browse.html",       priority: "0.9", freq: "weekly"  },
+    { loc: BASE_URL + "/generate.html",     priority: "0.8", freq: "weekly"  },
+    { loc: BASE_URL + "/success.html",      priority: "0.3", freq: "monthly" },
     { loc: BASE_URL + "/categories/",       priority: "0.9", freq: "weekly"  },
     { loc: BASE_URL + "/about.html",        priority: "0.5", freq: "monthly" },
     { loc: BASE_URL + "/contact.html",      priority: "0.4", freq: "monthly" },

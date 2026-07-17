@@ -11,12 +11,12 @@
   <meta property="og:title"       content="Converter Apps — 17 Free One-Page Apps" />
   <meta property="og:description" content="Conversion tools for files, data formats, media, units, encodings, and cross-format workflows. Browse 17 free one-page Converter apps you can deploy to Cloudflare Workers in seconds." />
   <meta property="og:url"         content="https://onePageApps.gic.mx/categories/converter.html" />
-  <meta property="og:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta property="og:image"       content="https://onePageApps.gic.mx/assets/social-preview.svg" />
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Converter Apps — 17 Free One-Page Apps" />
   <meta name="twitter:description" content="Conversion tools for files, data formats, media, units, encodings, and cross-format workflows. Browse 17 free one-page Converter apps you can deploy to Cloudflare Workers in seconds." />
-  <meta name="twitter:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta name="twitter:image"       content="https://onePageApps.gic.mx/assets/social-preview.svg" />
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{primary:'#ec5b13'}}}}</script>
@@ -42,6 +42,7 @@
       <nav class="hidden md:flex items-center gap-6 text-sm">
       <a href="https://onePageApps.gic.mx/" class="text-gray-600 hover:text-primary transition-colors">Home</a>
       <a href="https://onePageApps.gic.mx/browse.html" class="text-gray-600 hover:text-primary transition-colors">Browse</a>
+      <a href="https://onePageApps.gic.mx/generate.html" class="text-gray-600 hover:text-primary transition-colors">Generate</a>
       <a href="https://onePageApps.gic.mx/categories/" class="text-gray-600 hover:text-primary transition-colors">Categories</a>
       <a href="https://onePageApps.gic.mx/about.html" class="text-gray-600 hover:text-primary transition-colors">About</a>
       </nav>
@@ -101,15 +102,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Color Converter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">hex ↔ rgb ↔ hsl ↔ cmyk + extract palette from image</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=color_converter--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=color_converter--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=color_converter--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -120,15 +127,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Cooking Converter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Cups, tbsp, tsp, ml, oz — ingredient-aware conversion</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=cooking_unit_converter--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=cooking_unit_converter--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=cooking_unit_converter--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -139,15 +152,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">CSV ↔ JSON</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Bidirectional CSV/JSON conversion with preview table</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=csv_json_converter--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=csv_json_converter--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=csv_json_converter--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -158,15 +177,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Document Converter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Convert between document formats.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=document_converter--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=document_converter--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=document_converter--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -177,15 +202,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">HTML Entity Encoder</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Encode/decode HTML entities</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=html_entity_encoder_decoder--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=html_entity_encoder_decoder--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=html_entity_encoder_decoder--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -196,15 +227,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Image Optimizer</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Compress and optimize images.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=image_optimizer--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=image_optimizer--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=image_optimizer--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -215,15 +252,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">JSON ↔ YAML</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Bidirectional JSON/YAML conversion</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=json_yaml_converter--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=json_yaml_converter--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=json_yaml_converter--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -234,15 +277,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">JSON Formatter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Beautify, minify, validate JSON with tree view</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=json_formatter_validator--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=json_formatter_validator--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=json_formatter_validator--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -253,15 +302,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Morse Code Translator</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Text ↔ Morse code bidirectional with audio playback</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=morse_code_translator--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=morse_code_translator--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=morse_code_translator--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -272,15 +327,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Number Base Converter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Binary, decimal, hex, octal — live conversion</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=number_base_converter--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=number_base_converter--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=number_base_converter--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -291,15 +352,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Roman Numeral Converter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Integer ↔ Roman numerals</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=roman_numeral_converter--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=roman_numeral_converter--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=roman_numeral_converter--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -310,15 +377,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Secure File Sharing</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span><span class="text-xs bg-blue-100 text-blue-700 rounded-full px-2 py-0.5 font-medium">Stores Data</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Share files securely with password protection.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=secure_file_sharing--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=secure_file_sharing--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=secure_file_sharing--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -329,15 +402,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Unit Converter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Length, weight, temperature, volume, speed, cooking — tabbed UI</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=unit_converter--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=unit_converter--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=unit_converter--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -348,15 +427,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Unix Timestamp Converter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Convert between Unix timestamps and human-readable dates</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=timestamp_unix_converter--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=timestamp_unix_converter--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=timestamp_unix_converter--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -367,15 +452,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Video Compressor</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Compress videos using cloud services.</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=video_compressor--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=video_compressor--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=video_compressor--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -386,15 +477,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">World Timezone Converter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Convert times across any timezones with a city search</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=timezone_converter_world--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=timezone_converter_world--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=timezone_converter_world--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -405,15 +502,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">XML Formatter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Beautify, minify, validate XML</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=xml_formatter_beautifier--converter"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=xml_formatter_beautifier--converter"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=xml_formatter_beautifier--converter#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
     </div>
 

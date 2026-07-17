@@ -11,12 +11,12 @@
   <meta property="og:title"       content="SVG Tools Apps — 4 Free One-Page Apps" />
   <meta property="og:description" content="SVG-specific tools for editing, optimizing, recoloring, and converting vector graphics. Browse 4 free one-page SVG Tools apps you can deploy to Cloudflare Workers in seconds." />
   <meta property="og:url"         content="https://onePageApps.gic.mx/categories/svg-tools.html" />
-  <meta property="og:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta property="og:image"       content="https://onePageApps.gic.mx/assets/social-preview.svg" />
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="SVG Tools Apps — 4 Free One-Page Apps" />
   <meta name="twitter:description" content="SVG-specific tools for editing, optimizing, recoloring, and converting vector graphics. Browse 4 free one-page SVG Tools apps you can deploy to Cloudflare Workers in seconds." />
-  <meta name="twitter:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta name="twitter:image"       content="https://onePageApps.gic.mx/assets/social-preview.svg" />
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{primary:'#ec5b13'}}}}</script>
@@ -42,6 +42,7 @@
       <nav class="hidden md:flex items-center gap-6 text-sm">
       <a href="https://onePageApps.gic.mx/" class="text-gray-600 hover:text-primary transition-colors">Home</a>
       <a href="https://onePageApps.gic.mx/browse.html" class="text-gray-600 hover:text-primary transition-colors">Browse</a>
+      <a href="https://onePageApps.gic.mx/generate.html" class="text-gray-600 hover:text-primary transition-colors">Generate</a>
       <a href="https://onePageApps.gic.mx/categories/" class="text-gray-600 hover:text-primary transition-colors">Categories</a>
       <a href="https://onePageApps.gic.mx/about.html" class="text-gray-600 hover:text-primary transition-colors">About</a>
       </nav>
@@ -101,15 +102,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">SVG Editor</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Click elements to recolor or remove; drag to reposition</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=svg_editor_basic--svg_tools"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=svg_editor_basic--svg_tools"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=svg_editor_basic--svg_tools#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -120,15 +127,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">SVG Optimizer</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Strip metadata, simplify paths, minify SVG markup</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=svg_optimizer--svg_tools"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=svg_optimizer--svg_tools"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=svg_optimizer--svg_tools#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -139,15 +152,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">SVG Recolorer</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Batch-swap all instances of a color in an SVG file</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=svg_recolorer--svg_tools"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=svg_recolorer--svg_tools"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=svg_recolorer--svg_tools#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -158,15 +177,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">SVG to Image</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Export SVG to PNG or JPG at specified resolution</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=svg_to_image_converter--svg_tools"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=svg_to_image_converter--svg_tools"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=svg_to_image_converter--svg_tools#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
     </div>
 

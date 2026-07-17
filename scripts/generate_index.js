@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const zlib = require("zlib");
+const { execFileSync } = require("child_process");
 
 const CATEGORY_MAP = Object.freeze({
   "AI": { slug: "ai", display: "AI" },
@@ -62,6 +63,7 @@ function main() {
   const modelsPath = path.resolve(options.modelsPath);
   const companionTemplatesDir = path.resolve(options.companionTemplatesDir);
   const docsDir = path.join(repoRoot, "docs");
+  const resolveAddedAt = createAddedAtResolver(repoRoot);
 
   ensureDir(path.join(repoRoot, "scripts"));
   ensureDir(docsDir);
@@ -169,6 +171,10 @@ function main() {
       storesData: template.storesData,
       supportsNotifications: template.supportsNotifications,
       requiredKeys: template.requiredKeys,
+      addedAt: resolveAddedAt([
+        scriptLocation.resolvedPath,
+        helpExistsLocally ? localHelpPath : (helpExistsInFallback ? fallbackHelpPath : null),
+      ]),
       tags: deriveTags(template, categoryInfo),
     });
   }
@@ -824,6 +830,72 @@ function deriveTags(template, categoryInfo) {
   }
 
   return tags;
+}
+
+function createAddedAtResolver(repoRoot) {
+  const creationMap = loadGitCreationMap(repoRoot);
+
+  return function resolveAddedAt(paths) {
+    for (const candidate of paths.filter(Boolean)) {
+      const relative = relativeRepoPath(repoRoot, candidate);
+      if (relative && creationMap.has(relative)) {
+        return creationMap.get(relative);
+      }
+
+      try {
+        const stats = fs.statSync(candidate);
+        const birthTime = stats.birthtimeMs > 0 ? stats.birthtime : null;
+        const source = birthTime && Number.isFinite(birthTime.getTime()) ? birthTime : stats.mtime;
+        return new Date(source).toISOString();
+      } catch (_) {
+        // Ignore and continue to the next candidate.
+      }
+    }
+
+    return null;
+  };
+}
+
+function relativeRepoPath(repoRoot, candidatePath) {
+  const relative = path.relative(repoRoot, candidatePath);
+  if (!relative || relative.startsWith("..")) {
+    return null;
+  }
+  return toPosixPath(relative);
+}
+
+function loadGitCreationMap(repoRoot) {
+  const map = new Map();
+
+  try {
+    const output = execFileSync(
+      "git",
+      ["--no-pager", "log", "--diff-filter=A", "--reverse", "--format=__DATE__%cI", "--name-only", "--", "."],
+      { cwd: repoRoot, encoding: "utf8" }
+    );
+
+    let currentDate = null;
+    for (const line of output.split(/\r?\n/)) {
+      if (!line.trim()) {
+        continue;
+      }
+      if (line.startsWith("__DATE__")) {
+        currentDate = line.replace("__DATE__", "").trim();
+        continue;
+      }
+      if (!currentDate) {
+        continue;
+      }
+      const key = toPosixPath(line.trim());
+      if (!map.has(key)) {
+        map.set(key, currentDate);
+      }
+    }
+  } catch (_) {
+    return map;
+  }
+
+  return map;
 }
 
 function formatList(title, items) {

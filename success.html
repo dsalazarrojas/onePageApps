@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDJKPK590J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GDJKPK590J');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Success — One-Page Apps</title>
+  <meta name="description" content="Verify your onePageApps subscription, store your JWT, and continue generating or deploying apps.">
+  <link rel="canonical" href="https://onePageApps.gic.mx/success.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Subscription Success — One-Page Apps">
+  <meta property="og:description" content="Finish your checkout and unlock Pro or Business on onePageApps.gic.mx.">
+  <meta property="og:url" content="https://onePageApps.gic.mx/success.html">
+  <meta property="og:image" content="https://onePageApps.gic.mx/assets/social-preview.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Subscription Success — One-Page Apps">
+  <meta name="twitter:description" content="Verify your checkout and unlock hosted deploys and GIC AI access.">
+  <meta name="twitter:image" content="https://onePageApps.gic.mx/assets/social-preview.svg">
+  <script>if(localStorage.getItem('gic-theme')==='dark'||(!localStorage.getItem('gic-theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#ec5b13' },
+          fontFamily: { sans: ['Public Sans', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+    .surface-card { border-radius: 1.5rem; border: 1px solid rgb(226 232 240 / 1); background: rgba(255,255,255,.96); box-shadow: 0 20px 50px rgba(15,23,42,.06); }
+    .dark .surface-card { border-color: rgb(30 41 59 / 1); background: rgba(15,23,42,.92); box-shadow: 0 20px 50px rgba(2,6,23,.35); }
+    .btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; border-radius:1rem; background:#ec5b13; color:#fff; font-weight:700; padding:.85rem 1.1rem; }
+    .btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; border-radius:1rem; border:1px solid rgb(203 213 225 / 1); color:rgb(51 65 85 / 1); font-weight:700; padding:.85rem 1.1rem; }
+    .dark .btn-outline { border-color:rgb(51 65 85 / 1); color:rgb(226 232 240 / 1); }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 font-sans text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <main class="mx-auto flex min-h-screen max-w-4xl items-center px-4 py-16 sm:px-6 lg:px-8">
+    <section class="surface-card w-full p-8 sm:p-10">
+      <div class="mx-auto max-w-2xl text-center">
+        <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">
+          <span class="material-symbols-outlined text-[40px]">verified</span>
+        </div>
+        <h1 id="status-title" class="mt-6 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Verifying your subscription…</h1>
+        <p id="status-copy" class="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">We’re checking the Stripe session and preparing your signed access token.</p>
+      </div>
+
+      <div id="result-card" class="mx-auto mt-8 max-w-2xl rounded-3xl border border-dashed border-slate-300 bg-slate-50 px-6 py-5 text-left text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400">
+        Waiting for verification response…
+      </div>
+
+      <div class="mx-auto mt-8 flex max-w-2xl flex-col gap-3 sm:flex-row sm:justify-center">
+        <a href="generate.html" class="btn-primary">
+          <span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+          Go to Generate
+        </a>
+        <a href="browse.html" class="btn-outline">
+          <span class="material-symbols-outlined text-[18px]">apps</span>
+          Back to Browse
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/site-shared.js"></script>
+  <script src="assets/bridge.js"></script>
+  <script>
+    const titleNode = document.getElementById('status-title');
+    const copyNode = document.getElementById('status-copy');
+    const resultNode = document.getElementById('result-card');
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id') || '';
+    const stateToken = params.get('state_token') || '';
+
+    function renderResult(html, tone) {
+      const palette = {
+        neutral: 'border-dashed border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400',
+        success: 'border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-500/25 dark:bg-emerald-500/10 dark:text-emerald-100',
+        danger: 'border-rose-200 bg-rose-50 text-rose-900 dark:border-rose-500/25 dark:bg-rose-500/10 dark:text-rose-100'
+      };
+      resultNode.className = `mx-auto mt-8 max-w-2xl rounded-3xl border px-6 py-5 text-left text-sm ${palette[tone] || palette.neutral}`;
+      resultNode.innerHTML = html;
+    }
+
+    async function verify() {
+      if (!sessionId) {
+        titleNode.textContent = 'Missing Stripe session id';
+        copyNode.textContent = 'This page expects `?session_id=` from the Stripe success redirect.';
+        renderResult('Open checkout again from the pricing or deploy flows, then return after Stripe redirects you here.', 'danger');
+        return;
+      }
+
+      try {
+        const result = await window.OnePageAppsBridge.verifyStripeSession(sessionId, stateToken);
+        if (result.jwt) {
+          window.OnePageAppsBridge.setJwt(result.jwt);
+        }
+        const plan = String(result.plan || result.tier || 'pro').toLowerCase();
+        titleNode.textContent = `Welcome to ${plan === 'business' ? 'Business' : 'Pro'}`;
+        copyNode.textContent = 'Your JWT is now stored locally for gated onePageApps features on this browser.';
+        renderResult(`
+          <div class="font-semibold">Verification complete.</div>
+          <div class="mt-2">Plan: ${plan.toUpperCase()}</div>
+          ${result.email ? `<div class="mt-1">Email: ${result.email}</div>` : ''}
+          ${result.expiresAt ? `<div class="mt-1">Access token expires: ${window.OnePageAppsShared.formatDate(result.expiresAt)}</div>` : ''}
+          <div class="mt-4">Next steps:</div>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>Use <a class="font-semibold underline" href="generate.html">Generate</a> for GIC AI generations.</li>
+            <li>Use hosted deploy from <a class="font-semibold underline" href="preview.html">preview pages</a> or the generator.</li>
+            <li>Keep this browser signed in by preserving localStorage.</li>
+          </ul>
+        `, 'success');
+      } catch (error) {
+        titleNode.textContent = 'Verification failed';
+        copyNode.textContent = 'The bridge worker could not confirm this checkout session.';
+        renderResult(error.message || 'Unable to verify session.', 'danger');
+      }
+    }
+
+    window.OnePageAppsShared.track('app_view', { page: 'success' });
+    verify();
+  </script>
+</body>
+</html>

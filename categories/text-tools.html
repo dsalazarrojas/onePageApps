@@ -11,12 +11,12 @@
   <meta property="og:title"       content="Text Tools Apps — 5 Free One-Page Apps" />
   <meta property="og:description" content="Text-focused utilities for editing, counting, comparing, transforming, and preparing written content. Browse 5 free one-page Text Tools apps you can deploy to Cloudflare Workers in seconds." />
   <meta property="og:url"         content="https://onePageApps.gic.mx/categories/text-tools.html" />
-  <meta property="og:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta property="og:image"       content="https://onePageApps.gic.mx/assets/social-preview.svg" />
   <!-- Twitter -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Text Tools Apps — 5 Free One-Page Apps" />
   <meta name="twitter:description" content="Text-focused utilities for editing, counting, comparing, transforming, and preparing written content. Browse 5 free one-page Text Tools apps you can deploy to Cloudflare Workers in seconds." />
-  <meta name="twitter:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta name="twitter:image"       content="https://onePageApps.gic.mx/assets/social-preview.svg" />
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{primary:'#ec5b13'}}}}</script>
@@ -42,6 +42,7 @@
       <nav class="hidden md:flex items-center gap-6 text-sm">
       <a href="https://onePageApps.gic.mx/" class="text-gray-600 hover:text-primary transition-colors">Home</a>
       <a href="https://onePageApps.gic.mx/browse.html" class="text-gray-600 hover:text-primary transition-colors">Browse</a>
+      <a href="https://onePageApps.gic.mx/generate.html" class="text-gray-600 hover:text-primary transition-colors">Generate</a>
       <a href="https://onePageApps.gic.mx/categories/" class="text-gray-600 hover:text-primary transition-colors">Categories</a>
       <a href="https://onePageApps.gic.mx/about.html" class="text-gray-600 hover:text-primary transition-colors">About</a>
       </nav>
@@ -101,15 +102,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Case Converter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">camelCase, snake_case, kebab-case, SCREAMING_SNAKE, Title Case, Sentence case</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=case_converter_advanced--text_tools"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=case_converter_advanced--text_tools"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=case_converter_advanced--text_tools#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -120,15 +127,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Duplicate Line Remover</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Remove/count duplicate lines, sort, trim whitespace</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=duplicate_line_remover--text_tools"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=duplicate_line_remover--text_tools"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=duplicate_line_remover--text_tools#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -139,15 +152,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Lorem Ipsum Generator</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Generate paragraphs, words, lists in various styles (classic, cyberpunk, etc.)</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=lorem_ipsum_custom--text_tools"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=lorem_ipsum_custom--text_tools"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=lorem_ipsum_custom--text_tools#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -158,15 +177,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Text Diff Checker</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Side-by-side diff with highlighted additions/removals</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=text_diff_checker--text_tools"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=text_diff_checker--text_tools"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=text_diff_checker--text_tools#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
 
         <article class="bg-white rounded-xl border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
@@ -177,15 +202,21 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 leading-snug">Word Counter</h3>
-                <div class="flex items-center gap-1.5 mt-0.5"></div>
+                <div class="flex items-center gap-1.5 mt-0.5"><span class="text-xs bg-emerald-100 text-emerald-700 rounded-full px-2 py-0.5 font-medium">New</span></div>
               </div>
             </div>
           </div>
           <p class="text-sm text-gray-600 leading-relaxed flex-1">Words, chars, sentences, paragraphs + readability score (Flesch-Kincaid)</p>
-          <a href="https://onePageApps.gic.mx/preview.html?id=word_counter_advanced--text_tools"
-             class="self-start inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-            <span class="material-symbols-outlined text-base">open_in_new</span>Try it
-          </a>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://onePageApps.gic.mx/preview.html?id=word_counter_advanced--text_tools"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">open_in_new</span>Preview
+            </a>
+            <a href="https://onePageApps.gic.mx/preview.html?id=word_counter_advanced--text_tools#deploy-panel"
+               class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+              <span class="material-symbols-outlined text-base">cloud_upload</span>Deploy
+            </a>
+          </div>
         </article>
     </div>
 

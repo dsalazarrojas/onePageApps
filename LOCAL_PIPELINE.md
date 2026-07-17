@@ -4,6 +4,7 @@ This repo's local pipeline has two stages:
 
 1. **Migrate content into `onePageApps/`**
 2. **Generate the index artifacts in `docs/`**
+3. **Publish regenerated site artifacts before a push**
 
 The index generator is owned here and reads authoritative metadata from the companion app:
 
@@ -65,6 +66,35 @@ What the generator does:
 - validates content from `onePageApps/` first
 - falls back to `oneTimeUseWebApp/WorkerTemplates/` if migration is not complete yet
 - fails with explicit errors if required metadata or content cannot be found
+
+## 3) Publish workflow
+
+Before pushing site changes, run:
+
+```bash
+./scripts/publish.sh
+```
+
+That script:
+
+1. runs `node scripts/generate_index.js`
+2. runs `node scripts/generate_categories.js`
+3. prints a summary with total apps, category pages, and changed files
+4. shows `git status` so you can review exactly what changed
+
+If you want it to stage the generated artifacts after regeneration:
+
+```bash
+./scripts/publish.sh --stage
+```
+
+Recommended follow-up:
+
+```bash
+git add -p
+git commit -m "chore: publish YYYY-MM-DD"
+git push
+```
 
 ## Strict mode
 

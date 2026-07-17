@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDJKPK590J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GDJKPK590J');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate an App — One-Page Apps</title>
+  <meta name="description" content="Describe the app you want to build, generate Cloudflare Worker code with AI, validate it, and deploy it from onePageApps.gic.mx.">
+  <link rel="canonical" href="https://onePageApps.gic.mx/generate.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Generate an App — One-Page Apps">
+  <meta property="og:description" content="Turn a prompt into a deployable Cloudflare Worker, then validate and publish it from the web.">
+  <meta property="og:url" content="https://onePageApps.gic.mx/generate.html">
+  <meta property="og:image" content="https://onePageApps.gic.mx/assets/social-preview.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Generate an App — One-Page Apps">
+  <meta name="twitter:description" content="Prompt, edit, validate, and deploy Cloudflare Worker apps from onePageApps.gic.mx.">
+  <meta name="twitter:image" content="https://onePageApps.gic.mx/assets/social-preview.svg">
+  <script>if(localStorage.getItem('gic-theme')==='dark'||(!localStorage.getItem('gic-theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { primary: '#ec5b13' },
+          fontFamily: { sans: ['Public Sans', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+    .surface-card { border-radius: 1.5rem; border: 1px solid rgb(226 232 240 / 1); background: rgba(255,255,255,.96); box-shadow: 0 20px 50px rgba(15,23,42,.06); }
+    .dark .surface-card { border-color: rgb(30 41 59 / 1); background: rgba(15,23,42,.92); box-shadow: 0 20px 50px rgba(2,6,23,.35); }
+    .btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; border-radius:1rem; background:#ec5b13; color:#fff; font-weight:700; padding:.85rem 1.1rem; transition:background-color .2s ease; }
+    .btn-primary:hover { background:#d64f0f; }
+    .btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; border-radius:1rem; border:1px solid rgb(203 213 225 / 1); color:rgb(51 65 85 / 1); font-weight:700; padding:.85rem 1.1rem; transition:all .2s ease; }
+    .btn-outline:hover { border-color:#ec5b13; color:#ec5b13; }
+    .dark .btn-outline { border-color:rgb(51 65 85 / 1); color:rgb(226 232 240 / 1); }
+    .tab-active { background:#ec5b13; color:#fff; }
+    .modal-shell[hidden] { display:none; }
+    .code-editor { min-height: 26rem; resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace; }
+    .status-pill { display:inline-flex; align-items:center; gap:.45rem; border-radius:999px; padding:.35rem .8rem; font-size:.75rem; font-weight:700; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 font-sans text-slate-900 transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100">
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-orange-200/60 dark:shadow-orange-950/30">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 20;">widgets</span>
+        </div>
+        <span class="text-lg font-bold tracking-tight">One-Page Apps</span>
+      </a>
+
+      <nav class="hidden items-center gap-2 md:flex">
+        <a href="index.html" class="rounded-full px-3.5 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-primary dark:text-slate-300 dark:hover:bg-slate-900">Home</a>
+        <a href="browse.html" class="rounded-full px-3.5 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-primary dark:text-slate-300 dark:hover:bg-slate-900">Browse</a>
+        <a href="generate.html" class="rounded-full bg-orange-50 px-3.5 py-2 text-sm font-semibold text-primary dark:bg-orange-950/30">Generate</a>
+        <a href="about.html" class="rounded-full px-3.5 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-primary dark:text-slate-300 dark:hover:bg-slate-900">About</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-900">
+          <span class="material-symbols-outlined text-[22px] dark:hidden">light_mode</span>
+          <span class="material-symbols-outlined hidden text-[22px] dark:inline">dark_mode</span>
+        </button>
+        <a href="browse.html" class="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-orange-200/70 transition-colors hover:bg-orange-600 dark:shadow-orange-950/30 sm:inline-flex">Browse Apps</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pb-20">
+    <section class="relative overflow-hidden bg-white pb-14 pt-14 dark:bg-slate-950 lg:pb-18 lg:pt-20">
+      <div class="pointer-events-none absolute inset-0">
+        <div class="absolute left-1/2 top-0 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-orange-100/80 blur-3xl dark:bg-orange-950/25"></div>
+      </div>
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3.5 py-1.5 text-sm font-semibold text-primary dark:border-orange-800 dark:bg-orange-950/40">
+            <span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+            AI app generator
+          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Describe an app. Get deployable Worker code.</h1>
+          <p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+            Start from a prompt, seed from an existing template, validate the generated Worker, and deploy it either to your own Cloudflare account or with GIC-hosted publishing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto -mt-4 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div id="auth-banner" class="mb-6 rounded-2xl border border-orange-200 bg-orange-50 px-5 py-4 text-sm text-orange-900 dark:border-orange-900/60 dark:bg-orange-950/25 dark:text-orange-100"></div>
+
+      <div class="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+        <section class="surface-card p-6 sm:p-8">
+          <div class="mb-6 flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Prompt</h2>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Tell the generator what the app should do and optionally start from an existing template.</p>
+            </div>
+            <span id="generation-status-pill" class="status-pill bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+              <span class="material-symbols-outlined text-[15px]">hourglass</span>
+              Ready
+            </span>
+          </div>
+
+          <label for="prompt-input" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Describe the app</label>
+          <textarea id="prompt-input" rows="8" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-800 outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100" placeholder="Example: A markdown-to-HTML converter with syntax highlighting, downloadable output, and a settings panel for themes."></textarea>
+
+          <div class="mt-5 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="template-select" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Seed from existing</label>
+              <select id="template-select" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
+                <option value="">Start from scratch</option>
+              </select>
+            </div>
+            <div>
+              <div class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">LLM provider</div>
+              <div class="grid grid-cols-2 gap-2 rounded-2xl bg-slate-100 p-1 dark:bg-slate-900">
+                <button type="button" class="provider-tab rounded-xl px-4 py-2 text-sm font-semibold text-slate-700 transition dark:text-slate-200 tab-active" data-provider="gic">Use GIC AI</button>
+                <button type="button" class="provider-tab rounded-xl px-4 py-2 text-sm font-semibold text-slate-700 transition dark:text-slate-200" data-provider="byo">Use my own key</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="byo-fields" class="mt-5 hidden rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="byo-key" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">BYO API key</label>
+                <input id="byo-key" type="password" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="sk-..." />
+              </div>
+              <div>
+                <label for="byo-base-url" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Base URL</label>
+                <input id="byo-base-url" type="url" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="https://api.openai.com/v1" />
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button id="generate-btn" type="button" class="btn-primary">
+              <span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+              Generate
+            </button>
+            <button id="validate-btn" type="button" class="btn-outline">
+              <span class="material-symbols-outlined text-[18px]">fact_check</span>
+              Validate
+            </button>
+            <a href="browse.html" class="btn-outline">
+              <span class="material-symbols-outlined text-[18px]">apps</span>
+              Browse templates
+            </a>
+          </div>
+
+          <div id="validation-result" class="mt-6 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-5 py-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400">
+            Validate your generated Worker to check for unsafe patterns, missing handlers, and syntax-level issues.
+          </div>
+
+          <div id="stream-status" class="mt-4 text-sm text-slate-500 dark:text-slate-400"></div>
+        </section>
+
+        <section class="surface-card p-6 sm:p-8">
+          <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Worker editor</h2>
+              <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Generated code stays in `sessionStorage` on this device until you close the tab session.</p>
+            </div>
+            <label class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3.5 py-2 text-sm font-semibold text-slate-700 dark:bg-slate-900 dark:text-slate-200">
+              <input id="edit-toggle" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary">
+              Manual edit mode
+            </label>
+          </div>
+
+          <textarea id="code-output" class="code-editor w-full rounded-2xl border border-slate-200 bg-slate-950 px-4 py-4 text-sm leading-6 text-slate-100 outline-none transition focus:border-primary dark:border-slate-700" readonly placeholder="// Your generated Cloudflare Worker will appear here."></textarea>
+
+          <div class="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900">
+            <label for="instruction-input" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Refine with an instruction</label>
+            <div class="grid gap-3 sm:grid-cols-[1fr_auto]">
+              <input id="instruction-input" type="text" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="Example: Add CSV download support and preserve the current HTML layout." />
+              <button id="edit-btn" type="button" class="btn-primary">
+                <span class="material-symbols-outlined text-[18px]">edit</span>
+                Apply edit
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-6 grid gap-4 lg:grid-cols-2">
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-900">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Deploy to My Cloudflare</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Use your own Cloudflare account and API token. Credentials stay in your browser.</p>
+              <button id="open-byo-modal" type="button" class="btn-outline mt-5 w-full">
+                <span class="material-symbols-outlined text-[18px]">cloud_upload</span>
+                Open BYO deploy
+              </button>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-900">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Deploy with GIC Hosting</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Publish to a `{slug}.onepageapps.gic.mx` URL. Free tier gets 1 active 7-day app. Pro unlocks 10 permanent apps.</p>
+              <button id="deploy-gic-btn" type="button" class="btn-primary mt-5 w-full">
+                <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+                Deploy with GIC
+              </button>
+            </div>
+          </div>
+
+          <div id="deploy-result" class="mt-5 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-5 py-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400">
+            Deploy results will appear here after validation.
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div id="byo-modal" class="modal-shell fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 px-4" hidden>
+    <div class="w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div class="mb-5 flex items-start justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Deploy to My Cloudflare</h2>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">These values are stored only in your browser for convenience.</p>
+        </div>
+        <button id="close-byo-modal" type="button" class="rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="grid gap-4">
+        <div>
+          <label for="cf-account-id" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Cloudflare Account ID</label>
+          <input id="cf-account-id" type="text" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="32-char account id" />
+        </div>
+        <div>
+          <label for="cf-api-token" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Cloudflare API token</label>
+          <input id="cf-api-token" type="password" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="Workers Scripts:Edit token" />
+        </div>
+        <div>
+          <label for="script-name" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Worker script name</label>
+          <input id="script-name" type="text" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="my-generated-worker" />
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
+        <button id="cancel-byo-deploy" type="button" class="btn-outline">Cancel</button>
+        <button id="confirm-byo-deploy" type="button" class="btn-primary">
+          <span class="material-symbols-outlined text-[18px]">cloud_upload</span>
+          Deploy now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/site-shared.js"></script>
+  <script src="assets/bridge.js"></script>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const bridge = window.OnePageAppsBridge;
+    const shared = window.OnePageAppsShared;
+    let selectedProvider = 'gic';
+
+    function setTheme(theme) {
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+      localStorage.setItem('gic-theme', theme);
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.contains('dark');
+      setTheme(isDark ? 'light' : 'dark');
+    }
+
+    function setStatus(label, tone) {
+      const pill = $('generation-status-pill');
+      const palette = {
+        ready: 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300',
+        working: 'bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300',
+        success: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300',
+        danger: 'bg-rose-100 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300'
+      };
+      pill.className = `status-pill ${palette[tone] || palette.ready}`;
+      pill.innerHTML = `<span class="material-symbols-outlined text-[15px]">${tone === 'working' ? 'progress_activity' : tone === 'success' ? 'check_circle' : tone === 'danger' ? 'error' : 'hourglass'}</span><span>${label}</span>`;
+    }
+
+    function updateAuthBanner() {
+      const tier = bridge.getUserTier();
+      const copy = tier === 'business'
+        ? 'Business plan detected. You have unlimited GIC AI generations, unlimited hosted apps, and API access.'
+        : tier === 'pro'
+          ? 'Pro plan detected. You have unlimited GIC AI generations and up to 10 permanent hosted apps.'
+          : 'Free tier: you can use your own LLM key anytime, or use GIC AI for up to 5 generations per month after logging in. Paid checkout returns a JWT that unlocks Pro or Business.';
+      $('auth-banner').innerHTML = `
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div class="font-semibold">Current tier: ${tier.toUpperCase()}</div>
+            <div class="mt-1 leading-relaxed">${copy}</div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <a href="success.html" class="btn-outline">Already purchased?</a>
+            <a href="browse.html" class="btn-outline">Browse templates</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateProviderUi(provider) {
+      selectedProvider = provider;
+      document.querySelectorAll('.provider-tab').forEach((button) => {
+        button.classList.toggle('tab-active', button.dataset.provider === provider);
+      });
+      $('byo-fields').classList.toggle('hidden', provider !== 'byo');
+    }
+
+    function getGenerationBody(includeWorker) {
+      const draft = {
+        prompt: $('prompt-input').value.trim(),
+        baseTemplate: $('template-select').value || '',
+        byoKey: '',
+        byoBaseURL: ''
+      };
+
+      if (selectedProvider === 'byo') {
+        draft.byoKey = $('byo-key').value.trim();
+        draft.byoBaseURL = $('byo-base-url').value.trim();
+        bridge.setByoLlmDraft({ byoKey: draft.byoKey, byoBaseURL: draft.byoBaseURL });
+      }
+
+      if (includeWorker) {
+        draft.workerJs = $('code-output').value;
+        draft.instruction = $('instruction-input').value.trim();
+      }
+
+      return draft;
+    }
+
+    function setStreamMessage(message, tone) {
+      const palette = {
+        neutral: 'text-slate-500 dark:text-slate-400',
+        success: 'text-emerald-700 dark:text-emerald-300',
+        danger: 'text-rose-700 dark:text-rose-300'
+      };
+      $('stream-status').className = `mt-4 text-sm ${palette[tone] || palette.neutral}`;
+      $('stream-status').textContent = message;
+    }
+
+    function setDeployMessage(html, tone) {
+      const palette = {
+        neutral: 'border-dashed border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400',
+        success: 'border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-500/25 dark:bg-emerald-500/10 dark:text-emerald-100',
+        danger: 'border-rose-200 bg-rose-50 text-rose-900 dark:border-rose-500/25 dark:bg-rose-500/10 dark:text-rose-100'
+      };
+      $('deploy-result').className = `mt-5 rounded-2xl border px-5 py-4 text-sm ${palette[tone] || palette.neutral}`;
+      $('deploy-result').innerHTML = html;
+    }
+
+    function setValidationMessage(html, tone) {
+      const palette = {
+        neutral: 'border-dashed border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400',
+        success: 'border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-500/25 dark:bg-emerald-500/10 dark:text-emerald-100',
+        danger: 'border-rose-200 bg-rose-50 text-rose-900 dark:border-rose-500/25 dark:bg-rose-500/10 dark:text-rose-100'
+      };
+      $('validation-result').className = `mt-6 rounded-2xl border px-5 py-4 text-sm ${palette[tone] || palette.neutral}`;
+      $('validation-result').innerHTML = html;
+    }
+
+    function toggleBusy(isBusy) {
+      ['generate-btn', 'edit-btn', 'validate-btn', 'deploy-gic-btn', 'confirm-byo-deploy'].forEach((id) => {
+        const element = $(id);
+        if (element) element.disabled = isBusy;
+      });
+    }
+
+    function currentScript() {
+      return $('code-output').value.trim();
+    }
+
+    function updateEditor(script) {
+      $('code-output').value = script || '';
+      bridge.setGeneratedScript(script || '');
+    }
+
+    function openByoModal() {
+      $('byo-modal').hidden = false;
+    }
+
+    function closeByoModal() {
+      $('byo-modal').hidden = true;
+    }
+
+    async function runGeneration(endpoint) {
+      const body = getGenerationBody(endpoint.includes('/edit'));
+      if (!body.prompt && endpoint.includes('/create')) {
+        setStatus('Prompt required', 'danger');
+        setStreamMessage('Add a prompt before generating.', 'danger');
+        $('prompt-input').focus();
+        return;
+      }
+      if (endpoint.includes('/edit') && !body.instruction) {
+        setStatus('Instruction required', 'danger');
+        setStreamMessage('Describe the change you want before using AI edit.', 'danger');
+        $('instruction-input').focus();
+        return;
+      }
+      if (endpoint.includes('/edit') && !body.workerJs.trim()) {
+        setStatus('No code yet', 'danger');
+        setStreamMessage('Generate code first, then ask the AI to edit it.', 'danger');
+        return;
+      }
+
+      toggleBusy(true);
+      setStatus('Generating…', 'working');
+      setStreamMessage('Connecting to the bridge worker…');
+      let buffer = endpoint.includes('/edit') ? currentScript() : '';
+      if (!endpoint.includes('/edit')) updateEditor('');
+
+      try {
+        await bridge.streamJson(endpoint, body, {
+          onStatus(payload) {
+            const message = payload?.message || String(payload || 'Working…');
+            setStreamMessage(message);
+          },
+          onChunk(payload) {
+            const chunk = payload?.content || '';
+            buffer += chunk;
+            updateEditor(buffer);
+          },
+          onFinal(payload) {
+            const workerJs = payload?.workerJs || buffer;
+            updateEditor(workerJs);
+            bridge.setGeneratedPrompt($('prompt-input').value.trim());
+            setStatus('Ready to validate', 'success');
+            setStreamMessage('Generation finished. Validate before deploying.', 'success');
+          },
+          onError(payload) {
+            throw new Error(payload?.error || payload?.message || 'Generation failed.');
+          }
+        });
+        bridge.track('app_generate', {
+          provider: selectedProvider,
+          source: endpoint.includes('/edit') ? 'edit' : 'create'
+        });
+      } catch (error) {
+        setStatus('Generation failed', 'danger');
+        setStreamMessage(error.message || 'Generation failed.', 'danger');
+      } finally {
+        toggleBusy(false);
+      }
+    }
+
+    async function handleValidate() {
+      if (!currentScript()) {
+        setValidationMessage('Generate or paste Worker code before validating it.', 'danger');
+        return;
+      }
+
+      setValidationMessage('Running static validation…', 'neutral');
+      try {
+        const result = await bridge.validateWorker(currentScript());
+        const errors = Array.isArray(result.errors) ? result.errors : [];
+        if (result.valid) {
+          setValidationMessage(`<div class="font-semibold">Validation passed.</div><div class="mt-1">The Worker includes the required request handler shape and no disallowed patterns were detected.</div>`, 'success');
+        } else {
+          setValidationMessage(`<div class="font-semibold">Validation failed.</div><ul class="mt-3 list-disc space-y-1 pl-5">${errors.map((item) => `<li>${item}</li>`).join('')}</ul>`, 'danger');
+        }
+      } catch (error) {
+        setValidationMessage(error.message || 'Validation failed.', 'danger');
+      }
+    }
+
+    async function handleByoDeploy() {
+      if (!currentScript()) {
+        setDeployMessage('Generate and validate code before deploying it.', 'danger');
+        return;
+      }
+
+      const payload = {
+        cfAccountId: $('cf-account-id').value.trim(),
+        cfApiToken: $('cf-api-token').value.trim(),
+        scriptName: $('script-name').value.trim(),
+        workerJs: currentScript(),
+        secrets: {}
+      };
+
+      bridge.setCloudflareDraft(payload);
+      toggleBusy(true);
+      setDeployMessage('Deploying to your Cloudflare account…', 'neutral');
+
+      try {
+        const result = await bridge.deployByo(payload);
+        bridge.track('app_deploy_byo', { source: 'generate' });
+        setDeployMessage(`
+          <div class="font-semibold">BYO deploy request completed.</div>
+          <div class="mt-1">Cloudflare response was returned by the bridge worker.</div>
+          <pre class="mt-3 overflow-x-auto rounded-2xl bg-slate-950 px-4 py-3 text-xs text-slate-100">${JSON.stringify(result, null, 2)}</pre>
+        `, 'success');
+        closeByoModal();
+      } catch (error) {
+        setDeployMessage(error.message || 'BYO deploy failed.', 'danger');
+      } finally {
+        toggleBusy(false);
+      }
+    }
+
+    async function handleGicDeploy() {
+      if (!currentScript()) {
+        setDeployMessage('Generate and validate code before deploying it.', 'danger');
+        return;
+      }
+
+      toggleBusy(true);
+      setDeployMessage('Requesting a hosted deploy…', 'neutral');
+
+      try {
+        const result = await bridge.deployGic({
+          workerJs: currentScript(),
+          title: $('prompt-input').value.trim() || 'Generated App',
+          templateId: $('template-select').value || '',
+          secrets: {}
+        });
+        bridge.track('app_deploy_gic', { source: 'generate' });
+        setDeployMessage(`
+          <div class="font-semibold">Hosted deployment created.</div>
+          <div class="mt-2">URL: <a class="font-semibold underline" href="${result.url}" target="_blank" rel="noopener">${result.url}</a></div>
+          ${result.expiresAt ? `<div class="mt-1">Expires: ${shared.formatDate(result.expiresAt)}</div>` : ''}
+        `, 'success');
+      } catch (error) {
+        const checkoutUrl = error?.data?.checkoutUrl || error?.data?.url;
+        if (checkoutUrl) {
+          window.location.href = checkoutUrl;
+          return;
+        }
+        setDeployMessage(error.message || 'Hosted deploy failed.', 'danger');
+      } finally {
+        toggleBusy(false);
+      }
+    }
+
+    async function populateTemplates() {
+      try {
+        const payload = await shared.fetchAppsIndex('/docs/apps-index.json');
+        const apps = Array.isArray(payload.apps) ? payload.apps : [];
+        $('template-select').innerHTML = ['<option value="">Start from scratch</option>']
+          .concat(apps.slice().sort((a, b) => a.name.localeCompare(b.name)).map((app) => {
+            return `<option value="${app.id}">${app.name} — ${app.categoryDisplay || app.category}</option>`;
+          }))
+          .join('');
+      } catch (error) {
+        $('stream-status').textContent = 'App templates could not be loaded right now.';
+      }
+    }
+
+    function restoreDrafts() {
+      const byoDraft = bridge.getByoLlmDraft();
+      $('byo-key').value = byoDraft.byoKey || '';
+      $('byo-base-url').value = byoDraft.byoBaseURL || '';
+
+      const cfDraft = bridge.getCloudflareDraft();
+      $('cf-account-id').value = cfDraft.cfAccountId || '';
+      $('cf-api-token').value = cfDraft.cfApiToken || '';
+      $('script-name').value = cfDraft.scriptName || '';
+
+      const savedScript = bridge.getGeneratedScript();
+      const savedPrompt = bridge.getGeneratedPrompt();
+      if (savedPrompt) $('prompt-input').value = savedPrompt;
+      if (savedScript) {
+        updateEditor(savedScript);
+        setStatus('Draft restored', 'success');
+        setStreamMessage('Recovered your last generated Worker from this browser session.', 'success');
+      }
+    }
+
+    function bindEvents() {
+      $('theme-toggle').addEventListener('click', toggleTheme);
+      $('generate-btn').addEventListener('click', () => runGeneration('/ai/create/stream'));
+      $('edit-btn').addEventListener('click', () => runGeneration('/ai/edit/stream'));
+      $('validate-btn').addEventListener('click', handleValidate);
+      $('open-byo-modal').addEventListener('click', () => {
+        bridge.track('deploy_cta_click', { source: 'generate', type: 'byo' });
+        openByoModal();
+      });
+      $('close-byo-modal').addEventListener('click', closeByoModal);
+      $('cancel-byo-deploy').addEventListener('click', closeByoModal);
+      $('confirm-byo-deploy').addEventListener('click', handleByoDeploy);
+      $('deploy-gic-btn').addEventListener('click', () => {
+        bridge.track('deploy_cta_click', { source: 'generate', type: 'gic' });
+        handleGicDeploy();
+      });
+      $('edit-toggle').addEventListener('change', (event) => {
+        $('code-output').readOnly = !event.target.checked;
+      });
+      document.querySelectorAll('.provider-tab').forEach((button) => {
+        button.addEventListener('click', () => {
+          updateProviderUi(button.dataset.provider);
+        });
+      });
+      $('prompt-input').addEventListener('change', () => bridge.setGeneratedPrompt($('prompt-input').value.trim()));
+      $('byo-modal').addEventListener('click', (event) => {
+        if (event.target === $('byo-modal')) closeByoModal();
+      });
+    }
+
+    updateProviderUi('gic');
+    updateAuthBanner();
+    restoreDrafts();
+    bindEvents();
+    populateTemplates();
+    shared.track('generate_cta_click', { source: 'generate-page-load' });
+  </script>
+</body>
+</html>

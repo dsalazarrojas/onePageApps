@@ -1,175 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDJKPK590J"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GDJKPK590J');
-    </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDJKPK590J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GDJKPK590J');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — One-Page Apps</title>
-  <meta name="description" content="Learn about onePageApps.gic.mx — a library of 200 free one-page web apps you can deploy to Cloudflare Workers in seconds, built by GIC." />
+  <meta name="description" content="Learn about onePageApps.gic.mx, pricing tiers, hosted deploys, and the API surfaces behind the app generator workflow." />
   <link rel="canonical" href="https://onePageApps.gic.mx/about.html" />
-  <meta property="og:type"        content="website" />
-  <meta property="og:title"       content="About — One-Page Apps" />
-  <meta property="og:description" content="Learn about onePageApps.gic.mx — a library of 200 free one-page web apps." />
-  <meta property="og:url"         content="https://onePageApps.gic.mx/about.html" />
-  <meta property="og:image"       content="https://onePageApps.gic.mx/docs/assets/social-preview.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About — One-Page Apps" />
+  <meta property="og:description" content="About onePageApps.gic.mx, the AI generator, hosted deploys, and API access." />
+  <meta property="og:url" content="https://onePageApps.gic.mx/about.html" />
+  <meta property="og:image" content="https://onePageApps.gic.mx/assets/social-preview.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — One-Page Apps" />
+  <meta name="twitter:description" content="Learn how onePageApps works across static previews, AI generation, and hosted deploys." />
+  <meta name="twitter:image" content="https://onePageApps.gic.mx/assets/social-preview.svg" />
+  <script>if(localStorage.getItem('gic-theme')==='dark'||(!localStorage.getItem('gic-theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}</script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{primary:'#ec5b13'}}}}</script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#ec5b13'},fontFamily:{sans:['Public Sans','sans-serif']}}}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" />
   <style>
-    body { font-family: 'Public Sans', sans-serif; }
-    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align: middle; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
-
-  <!-- Navbar -->
-  <header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
-      <a href="https://onePageApps.gic.mx/" class="flex items-center gap-2 font-bold text-lg text-primary">
+<body class="min-h-screen bg-slate-50 font-sans text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="index.html" class="flex items-center gap-2.5 font-bold text-primary">
         <span class="material-symbols-outlined">widgets</span>
         One-Page Apps
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm text-gray-600">
-        <a href="https://onePageApps.gic.mx/"               class="hover:text-primary transition-colors">Home</a>
-        <a href="https://onePageApps.gic.mx/browse.html"    class="hover:text-primary transition-colors">Browse</a>
-        <a href="https://onePageApps.gic.mx/categories/"    class="hover:text-primary transition-colors">Categories</a>
-        <a href="https://onePageApps.gic.mx/about.html"     class="text-primary font-semibold">About</a>
+      <nav class="hidden items-center gap-4 text-sm md:flex">
+        <a href="index.html" class="text-slate-600 transition-colors hover:text-primary dark:text-slate-300">Home</a>
+        <a href="browse.html" class="text-slate-600 transition-colors hover:text-primary dark:text-slate-300">Browse</a>
+        <a href="generate.html" class="text-slate-600 transition-colors hover:text-primary dark:text-slate-300">Generate</a>
+        <a href="about.html" class="font-semibold text-primary">About</a>
       </nav>
-      <a href="https://onePageApps.gic.mx/browse.html"
-         class="inline-flex items-center gap-1 text-sm bg-primary text-white px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity font-medium">
-        <span class="material-symbols-outlined text-base">search</span>Browse Apps
-      </a>
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-900">
+          <span class="material-symbols-outlined text-[22px] dark:hidden">light_mode</span>
+          <span class="material-symbols-outlined hidden text-[22px] dark:inline">dark_mode</span>
+        </button>
+        <a href="generate.html" class="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white">
+          <span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+          Generate
+        </a>
+      </div>
     </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 flex-1">
-
-    <!-- Hero -->
-    <div class="text-center mb-14">
-      <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-primary/10 mb-6">
-        <span class="material-symbols-outlined text-primary" style="font-size:2.5rem">widgets</span>
+  <main class="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+    <section class="mb-12 text-center">
+      <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-primary">
+        <span class="material-symbols-outlined text-[42px]">widgets</span>
       </div>
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">About One-Page Apps</h1>
-      <p class="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
-        A curated library of 200 free, single-file web apps you can try instantly in your browser
-        and deploy to <strong>Cloudflare Workers</strong> in one click.
-      </p>
-    </div>
-
-    <!-- What it is -->
-    <section class="prose max-w-none mb-12">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">What is this?</h2>
-      <p class="text-gray-700 leading-relaxed mb-4">
-        <strong>onePageApps.gic.mx</strong> is a showcase and distribution site for 200 ready-to-deploy
-        Cloudflare Worker scripts — everything from AI text tools and image editors to calculators,
-        converters, and embeddable widgets.
-      </p>
-      <p class="text-gray-700 leading-relaxed mb-4">
-        Each app is a single <code class="bg-gray-100 rounded px-1">.js</code> file you can copy, customise,
-        and deploy to the Cloudflare Workers free tier in seconds. No build step, no dependencies,
-        no server to manage.
-      </p>
-      <p class="text-gray-700 leading-relaxed">
-        The collection is also available through the <strong>One-Page Apps</strong> iOS and macOS app,
-        which lets you browse, preview, and deploy apps directly from your device.
+      <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">About One-Page Apps</h1>
+      <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+        onePageApps.gic.mx is a curated library of Cloudflare Worker templates you can browse, preview, remix, generate with AI, and publish without standing up a traditional backend.
       </p>
     </section>
 
-    <!-- Feature cards -->
-    <section class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-14">
-      <div class="bg-white rounded-xl border border-gray-200 p-6 text-center">
-        <span class="material-symbols-outlined text-primary text-4xl mb-3 block">bolt</span>
-        <h3 class="font-semibold text-gray-900 mb-2">Instant Deploy</h3>
-        <p class="text-sm text-gray-600">Copy the script, paste into Cloudflare Workers, and you're live — often in under 60 seconds.</p>
-      </div>
-      <div class="bg-white rounded-xl border border-gray-200 p-6 text-center">
-        <span class="material-symbols-outlined text-primary text-4xl mb-3 block">open_source</span>
-        <h3 class="font-semibold text-gray-900 mb-2">Fully Open Source</h3>
-        <p class="text-sm text-gray-600">Every script is MIT-licensed. Use it, fork it, embed it — no strings attached.</p>
-      </div>
-      <div class="bg-white rounded-xl border border-gray-200 p-6 text-center">
-        <span class="material-symbols-outlined text-primary text-4xl mb-3 block">category</span>
-        <h3 class="font-semibold text-gray-900 mb-2">17 Categories</h3>
-        <p class="text-sm text-gray-600">AI, converters, calculators, image tools, developer utilities, embeddable widgets, and more.</p>
+    <section class="mb-12 grid gap-6 md:grid-cols-3">
+      <article class="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+        <span class="material-symbols-outlined text-4xl text-primary">visibility</span>
+        <h2 class="mt-4 text-xl font-bold">Preview-first workflow</h2>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Every app is discoverable through browse and preview flows so you can inspect the experience before copying or deploying anything.</p>
+      </article>
+      <article class="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+        <span class="material-symbols-outlined text-4xl text-primary">auto_awesome</span>
+        <h2 class="mt-4 text-xl font-bold">AI-assisted generation</h2>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">The `generate.html` workflow sends prompts to a private Cloudflare bridge worker that returns deployable Worker JavaScript and validation feedback.</p>
+      </article>
+      <article class="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+        <span class="material-symbols-outlined text-4xl text-primary">rocket_launch</span>
+        <h2 class="mt-4 text-xl font-bold">Deploy your way</h2>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Use your own Cloudflare account for free, or publish to a hosted `*.onepageapps.gic.mx` subdomain once your plan allows it.</p>
+      </article>
+    </section>
+
+    <section class="mb-12 rounded-3xl border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-900">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">How the platform is structured</h2>
+      <div class="mt-5 space-y-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+        <p><strong class="text-slate-900 dark:text-slate-100">Public repo:</strong> this static site hosts the catalog, previews, category pages, and the client-side generator/deploy UI.</p>
+        <p><strong class="text-slate-900 dark:text-slate-100">Private repo:</strong> `onePageAppsPrivate` contains the Cloudflare Worker that handles AI generation, validation, Stripe checkout verification, hosted deploys, and API key management.</p>
+        <p><strong class="text-slate-900 dark:text-slate-100">Companion app:</strong> the iOS/macOS app syncs from the same `docs/apps-index.json` manifest, so web and native discovery stay aligned.</p>
       </div>
     </section>
 
-    <!-- How it works -->
-    <section class="mb-14">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">How it works</h2>
-      <ol class="space-y-5">
-        <li class="flex gap-4">
-          <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
-          <div>
-            <p class="font-semibold text-gray-900">Browse or search</p>
-            <p class="text-sm text-gray-600 mt-1">Use the <a href="https://onePageApps.gic.mx/browse.html" class="text-primary hover:underline">Browse page</a> or <a href="https://onePageApps.gic.mx/categories/" class="text-primary hover:underline">category pages</a> to find an app that fits your needs.</p>
-          </div>
-        </li>
-        <li class="flex gap-4">
-          <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm flex-shrink-0">2</div>
-          <div>
-            <p class="font-semibold text-gray-900">Try it live</p>
-            <p class="text-sm text-gray-600 mt-1">Each app has a live preview page so you can test it right here in your browser before deploying anything.</p>
-          </div>
-        </li>
-        <li class="flex gap-4">
-          <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm flex-shrink-0">3</div>
-          <div>
-            <p class="font-semibold text-gray-900">Deploy to Cloudflare Workers</p>
-            <p class="text-sm text-gray-600 mt-1">Copy the script (or use the iOS app to deploy with one tap). The Cloudflare free tier covers most personal and small-project usage.</p>
-          </div>
-        </li>
-      </ol>
+    <section class="mb-12 rounded-3xl border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-900">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Pricing and access</h2>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Same structure used across the PRD: free browsing and BYO deploys, then paid hosted features.</p>
+        </div>
+        <a href="generate.html" class="text-sm font-semibold text-primary hover:underline">Open the generator →</a>
+      </div>
+
+      <div class="mt-6 overflow-x-auto">
+        <table class="min-w-full border-separate border-spacing-y-3 text-left text-sm">
+          <thead class="text-slate-500 dark:text-slate-400">
+            <tr>
+              <th class="pr-4">Feature</th>
+              <th class="pr-4">Free</th>
+              <th class="pr-4">Pro</th>
+              <th>Business</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="rounded-2xl bg-slate-50 dark:bg-slate-950/50">
+              <td class="rounded-l-2xl px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">Browse + live preview</td>
+              <td class="px-4 py-3">Yes</td>
+              <td class="px-4 py-3">Yes</td>
+              <td class="rounded-r-2xl px-4 py-3">Yes</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-950/50">
+              <td class="rounded-l-2xl px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">BYO Cloudflare deploy</td>
+              <td class="px-4 py-3">Yes</td>
+              <td class="px-4 py-3">Yes</td>
+              <td class="rounded-r-2xl px-4 py-3">Yes</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-950/50">
+              <td class="rounded-l-2xl px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">AI generation with your own LLM key</td>
+              <td class="px-4 py-3">Yes</td>
+              <td class="px-4 py-3">Yes</td>
+              <td class="rounded-r-2xl px-4 py-3">Yes</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-950/50">
+              <td class="rounded-l-2xl px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">AI generation with GIC-hosted LLM</td>
+              <td class="px-4 py-3">5 / month</td>
+              <td class="px-4 py-3">Unlimited</td>
+              <td class="rounded-r-2xl px-4 py-3">Unlimited</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-950/50">
+              <td class="rounded-l-2xl px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">Hosted apps on `onepageapps.gic.mx`</td>
+              <td class="px-4 py-3">1 active / 7 days</td>
+              <td class="px-4 py-3">10 permanent</td>
+              <td class="rounded-r-2xl px-4 py-3">Unlimited</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-950/50">
+              <td class="rounded-l-2xl px-4 py-3 font-semibold text-slate-900 dark:text-slate-100">API access</td>
+              <td class="px-4 py-3">No</td>
+              <td class="px-4 py-3">Yes</td>
+              <td class="rounded-r-2xl px-4 py-3">Yes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
-    <!-- Built by -->
-    <section class="bg-white rounded-2xl border border-gray-200 p-8 text-center">
-      <h2 class="text-xl font-bold text-gray-900 mb-3">Built by GIC</h2>
-      <p class="text-gray-600 leading-relaxed max-w-xl mx-auto mb-5">
-        This site is a companion to the <strong>oneTimeUseWebApp</strong> iOS/macOS app.
-        It's maintained by the same team that builds <a href="https://forms.gic.mx" class="text-primary hover:underline">forms.gic.mx</a>
-        and other open tools for everyday web development.
+    <section class="mb-12 rounded-3xl border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-900">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">API and bridge routes</h2>
+      <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">The public site talks to the private bridge Worker. These routes are the core ones exposed in the PRD and implemented in the companion repo:</p>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl bg-slate-50 p-5 dark:bg-slate-950/50">
+          <h3 class="font-bold text-slate-900 dark:text-slate-100">Generation</h3>
+          <ul class="mt-3 space-y-2 font-mono text-xs text-slate-700 dark:text-slate-300">
+            <li>`POST /ai/create`</li>
+            <li>`POST /ai/create/stream`</li>
+            <li>`POST /ai/edit`</li>
+            <li>`POST /ai/edit/stream`</li>
+            <li>`POST /validate`</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-slate-50 p-5 dark:bg-slate-950/50">
+          <h3 class="font-bold text-slate-900 dark:text-slate-100">Deploy + billing</h3>
+          <ul class="mt-3 space-y-2 font-mono text-xs text-slate-700 dark:text-slate-300">
+            <li>`POST /deploy/byo`</li>
+            <li>`POST /deploy/gic`</li>
+            <li>`POST /apps/list`</li>
+            <li>`POST /apps/delete`</li>
+            <li>`POST /stripe/*`</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-slate-50 p-5 dark:bg-slate-950/50">
+          <h3 class="font-bold text-slate-900 dark:text-slate-100">API keys</h3>
+          <ul class="mt-3 space-y-2 font-mono text-xs text-slate-700 dark:text-slate-300">
+            <li>`POST /api/keys/create`</li>
+            <li>`POST /api/keys/list`</li>
+            <li>`POST /api/keys/revoke`</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl bg-slate-50 p-5 dark:bg-slate-950/50">
+          <h3 class="font-bold text-slate-900 dark:text-slate-100">Admin gift keys</h3>
+          <ul class="mt-3 space-y-2 font-mono text-xs text-slate-700 dark:text-slate-300">
+            <li>`POST /admin/keys/create`</li>
+            <li>`POST /admin/keys/list`</li>
+            <li>`POST /admin/keys/revoke`</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-2xl border border-orange-200 bg-orange-50 p-4 text-sm leading-relaxed text-orange-900 dark:border-orange-900/60 dark:bg-orange-950/25 dark:text-orange-100">
+        Browser calls are CORS-restricted to `https://onepageapps.gic.mx`, while API-key routes are designed for server-side or automation use. JWT auth unlocks paid features, and BYO credentials stay on the client when possible.
+      </div>
+    </section>
+
+    <section class="rounded-3xl border border-slate-200 bg-white p-8 text-center dark:border-slate-800 dark:bg-slate-900">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Built by GIC</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+        This site is a companion to the OneTimeUseWebApp ecosystem and follows the same public/private split used by `forms.gic.mx`: public browsing and UI in one repo, protected worker logic in a separate private repo.
       </p>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a href="https://onePageApps.gic.mx/browse.html"
-           class="inline-flex items-center gap-1.5 bg-primary text-white rounded-full px-5 py-2 text-sm font-medium hover:opacity-90 transition-opacity">
-          <span class="material-symbols-outlined text-base">search</span>Browse all apps
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="generate.html" class="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white">
+          <span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+          Generate an app
         </a>
-        <a href="https://github.com/danielsalazar/onePageApps"
-           class="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 rounded-full px-5 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">
-          <span class="material-symbols-outlined text-base">open_in_new</span>GitHub
-        </a>
-        <a href="https://onePageApps.gic.mx/contact.html"
-           class="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 rounded-full px-5 py-2 text-sm font-medium hover:bg-gray-200 transition-colors">
-          <span class="material-symbols-outlined text-base">mail</span>Contact
+        <a href="browse.html" class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-5 py-2.5 text-sm font-semibold text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+          <span class="material-symbols-outlined text-[18px]">apps</span>
+          Browse apps
         </a>
       </div>
     </section>
-
   </main>
 
-  <!-- Footer -->
-  <footer class="mt-auto bg-white border-t border-gray-200 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+  <footer class="mt-auto border-t border-slate-200 bg-white py-8 dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-sm text-slate-500 dark:text-slate-400 sm:px-6 lg:flex-row lg:px-8">
       <p>&copy; 2026 onePageApps.gic.mx — 200 free one-page web apps</p>
       <nav class="flex flex-wrap gap-4">
-        <a href="https://onePageApps.gic.mx/about.html"   class="hover:text-primary transition-colors">About</a>
-        <a href="https://onePageApps.gic.mx/contact.html" class="hover:text-primary transition-colors">Contact</a>
-        <a href="https://onePageApps.gic.mx/privacy.html" class="hover:text-primary transition-colors">Privacy</a>
-        <a href="https://onePageApps.gic.mx/terms.html"   class="hover:text-primary transition-colors">Terms</a>
-        <a href="https://onePageApps.gic.mx/sitemap.xml"  class="hover:text-primary transition-colors">Sitemap</a>
+        <a href="index.html" class="transition-colors hover:text-primary">Home</a>
+        <a href="browse.html" class="transition-colors hover:text-primary">Browse</a>
+        <a href="generate.html" class="transition-colors hover:text-primary">Generate</a>
+        <a href="contact.html" class="transition-colors hover:text-primary">Contact</a>
+        <a href="privacy.html" class="transition-colors hover:text-primary">Privacy</a>
       </nav>
     </div>
   </footer>
 
+  <script src="assets/site-shared.js"></script>
+  <script src="assets/bridge.js"></script>
+  <script>
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('gic-theme', isDark ? 'dark' : 'light');
+    });
+  </script>
 </body>
 </html>

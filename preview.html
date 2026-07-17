@@ -302,6 +302,7 @@
       <nav class="hidden items-center gap-6 text-sm md:flex">
         <a href="https://onePageApps.gic.mx/" class="text-slate-600 transition-colors hover:text-primary dark:text-slate-300">Home</a>
         <a href="https://onePageApps.gic.mx/browse.html" class="font-semibold text-primary">Browse</a>
+        <a href="https://onePageApps.gic.mx/generate.html" class="text-slate-600 transition-colors hover:text-primary dark:text-slate-300">Generate</a>
         <a href="https://onePageApps.gic.mx/categories/" class="text-slate-600 transition-colors hover:text-primary dark:text-slate-300">Categories</a>
         <a href="https://onePageApps.gic.mx/about.html" class="text-slate-600 transition-colors hover:text-primary dark:text-slate-300">About</a>
       </nav>
@@ -496,7 +497,7 @@
         </div>
 
         <aside class="space-y-6 lg:col-span-2">
-          <section class="surface-card deploy-card p-6">
+          <section id="deploy-panel" class="surface-card deploy-card p-6">
             <div class="mb-4 flex items-center gap-3">
               <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary dark:bg-primary/15">
                 <span class="material-symbols-outlined text-2xl">cloud</span>
@@ -507,22 +508,31 @@
               </div>
             </div>
 
-            <ol class="space-y-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-              <li class="flex gap-3"><span class="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary dark:bg-primary/15">1</span><span>Copy the worker script from this preview page.</span></li>
-              <li class="flex gap-3"><span class="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary dark:bg-primary/15">2</span><span>Open the Cloudflare dashboard and go to Workers &amp; Pages.</span></li>
-              <li class="flex gap-3"><span class="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary dark:bg-primary/15">3</span><span>Create a new Worker and replace the starter code.</span></li>
-              <li class="flex gap-3"><span class="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary dark:bg-primary/15">4</span><span>Paste, add any needed secrets, then deploy.</span></li>
-            </ol>
+            <div class="space-y-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              <p>Use the preview as your deploy launchpad: copy the script, send it to your own Cloudflare account, or publish it to a hosted `*.onepageapps.gic.mx` URL when your plan allows it.</p>
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/50">
+                <div class="font-semibold text-slate-900 dark:text-slate-100">Best path for free users</div>
+                <p class="mt-1">Deploy with your own Cloudflare account. Credentials stay in your browser and are forwarded only to Cloudflare through the bridge worker.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/50">
+                <div class="font-semibold text-slate-900 dark:text-slate-100">Best path for Pro / Business</div>
+                <p class="mt-1">Use GIC-hosted deploys for shareable subdomains and managed publishing limits based on your subscription tier.</p>
+              </div>
+            </div>
 
             <div class="mt-6 flex flex-col gap-3">
               <button id="copy-script-btn" type="button" class="btn-outline w-full">
                 <span class="material-symbols-outlined text-[20px]">content_copy</span>
                 <span>Copy Script</span>
               </button>
-              <a id="deploy-app-link" href="https://github.com/dsalazarrojas/oneTimeUseWebApp" class="btn-primary w-full">
-                <span class="material-symbols-outlined text-[20px]">phone_iphone</span>
-                <span>Open in oneTimeUseWebApp</span>
-              </a>
+              <button id="deploy-byo-btn" type="button" class="btn-primary w-full">
+                <span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+                <span>Deploy to My Cloudflare</span>
+              </button>
+              <button id="deploy-gic-btn" type="button" class="btn-outline w-full">
+                <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                <span>Deploy with GIC Hosting</span>
+              </button>
               <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="btn-primary w-full">
                 <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
                 <span>Open Cloudflare Dashboard →</span>
@@ -531,6 +541,10 @@
                 <span class="material-symbols-outlined text-[20px]">code</span>
                 <span>View Source on GitHub →</span>
               </a>
+            </div>
+
+            <div id="deploy-status" class="mt-5 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400">
+              Deploy results will appear here.
             </div>
           </section>
 
@@ -593,6 +607,47 @@
     </section>
   </main>
 
+  <div id="deploy-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 px-4">
+    <div class="w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div class="mb-5 flex items-start justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Deploy to My Cloudflare</h2>
+          <p id="deploy-modal-copy" class="mt-1 text-sm text-slate-600 dark:text-slate-400">Deploy this template to your own Workers account.</p>
+        </div>
+        <button id="close-deploy-modal" type="button" class="rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="grid gap-4">
+        <div>
+          <label for="deploy-account-id" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Cloudflare Account ID</label>
+          <input id="deploy-account-id" type="text" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="32-char account id" />
+        </div>
+        <div>
+          <label for="deploy-api-token" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Cloudflare API token</label>
+          <input id="deploy-api-token" type="password" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="Workers Scripts:Edit token" />
+        </div>
+        <div>
+          <label for="deploy-script-name" class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Worker script name</label>
+          <input id="deploy-script-name" type="text" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/10 dark:border-slate-700 dark:bg-slate-950" placeholder="my-onepageapp-worker" />
+        </div>
+      </div>
+
+      <div id="deploy-modal-status" class="mt-5 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400">
+        Deployment results will appear here.
+      </div>
+
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
+        <button id="cancel-deploy-modal" type="button" class="btn-outline">Cancel</button>
+        <button id="confirm-deploy-modal" type="button" class="btn-primary">
+          <span class="material-symbols-outlined text-[18px]">cloud_upload</span>
+          Deploy now
+        </button>
+      </div>
+    </div>
+  </div>
+
   <footer class="mt-auto border-t border-slate-200 bg-white py-8 dark:border-slate-800 dark:bg-slate-900">
     <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-sm text-slate-500 dark:text-slate-400 sm:px-6 lg:flex-row lg:px-8">
       <p>&copy; 2026 onePageApps.gic.mx — 200 free one-page web apps</p>
@@ -607,6 +662,7 @@
   </footer>
 
   <script src="assets/site-shared.js"></script>
+  <script src="assets/bridge.js"></script>
   <script>
     const INDEX_URL = '/docs/apps-index.json';
     const GITHUB_RAW = 'https://raw.githubusercontent.com/gic-mx/onePageApps/main/';
@@ -866,7 +922,6 @@
       const sourceHref = githubBlobUrl(app.scriptPath);
       const historyHref = githubHistoryUrl(app.scriptPath);
       const appUrl = previewUrl(app.id);
-      $('deploy-app-link').href = nativeAppDeepLink(app);
       $('deploy-source-link').href = sourceHref;
       $('info-category-link').textContent = app.categoryDisplay;
       $('info-category-link').href = categoryHref;
@@ -1119,6 +1174,34 @@
       }, delay);
     }
 
+    function setDeployStatus(html, tone = 'neutral', targetId = 'deploy-status') {
+      const palettes = {
+        neutral: 'border-dashed border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-950/50 dark:text-slate-400',
+        success: 'border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-500/25 dark:bg-emerald-500/10 dark:text-emerald-100',
+        danger: 'border-rose-200 bg-rose-50 text-rose-900 dark:border-rose-500/25 dark:bg-rose-500/10 dark:text-rose-100'
+      };
+      const node = $(targetId);
+      node.className = `mt-5 rounded-2xl border px-4 py-3 text-sm ${palettes[tone] || palettes.neutral}`;
+      node.innerHTML = html;
+    }
+
+    function openDeployModal() {
+      if (!currentApp) return;
+      const draft = window.OnePageAppsBridge.getCloudflareDraft();
+      $('deploy-account-id').value = draft.cfAccountId || '';
+      $('deploy-api-token').value = draft.cfApiToken || '';
+      $('deploy-script-name').value = draft.scriptName || currentApp.workerScriptName || currentApp.id.replace(/[^a-z0-9-]/gi, '-').toLowerCase();
+      $('deploy-modal-copy').textContent = `Deploy ${currentApp.name} to your own Cloudflare Workers account.`;
+      setDeployStatus('Deployment results will appear here.', 'neutral', 'deploy-modal-status');
+      $('deploy-modal').classList.remove('hidden');
+      $('deploy-modal').classList.add('flex');
+    }
+
+    function closeDeployModal() {
+      $('deploy-modal').classList.add('hidden');
+      $('deploy-modal').classList.remove('flex');
+    }
+
     async function handleCopyUrl() {
       if (!currentApp) return;
       const button = $('copy-url-btn');
@@ -1142,6 +1225,70 @@
         flashButton(button, 'Unavailable');
       } finally {
         button.disabled = false;
+      }
+    }
+
+    async function handleByoDeploy() {
+      if (!currentApp) return;
+      $('confirm-deploy-modal').disabled = true;
+
+      const payload = {
+        cfAccountId: $('deploy-account-id').value.trim(),
+        cfApiToken: $('deploy-api-token').value.trim(),
+        scriptName: $('deploy-script-name').value.trim(),
+        workerJs: '',
+        secrets: {}
+      };
+
+      window.OnePageAppsBridge.setCloudflareDraft(payload);
+      setDeployStatus('Loading worker source and sending deploy request…', 'neutral', 'deploy-modal-status');
+
+      try {
+        payload.workerJs = await fetchScript(currentApp);
+        const result = await window.OnePageAppsBridge.deployByo(payload);
+        window.OnePageAppsShared.track('app_deploy_byo', { source: 'preview', app_id: currentApp.id });
+        setDeployStatus(`
+          <div class="font-semibold">Deploy request completed for ${escapeHtml(currentApp.name)}.</div>
+          <pre class="mt-3 overflow-x-auto rounded-2xl bg-slate-950 px-4 py-3 text-xs text-slate-100">${JSON.stringify(result, null, 2)}</pre>
+        `, 'success', 'deploy-modal-status');
+        setDeployStatus(`Deploy request completed for <strong>${escapeHtml(currentApp.name)}</strong>. Review the modal for the Cloudflare response.`, 'success');
+      } catch (error) {
+        const message = escapeHtml(error?.message || 'Deploy failed.');
+        setDeployStatus(message, 'danger', 'deploy-modal-status');
+        setDeployStatus(message, 'danger');
+      } finally {
+        $('confirm-deploy-modal').disabled = false;
+      }
+    }
+
+    async function handleGicDeploy() {
+      if (!currentApp) return;
+      $('deploy-gic-btn').disabled = true;
+      setDeployStatus('Requesting a hosted deploy…');
+
+      try {
+        const workerJs = await fetchScript(currentApp);
+        const result = await window.OnePageAppsBridge.deployGic({
+          workerJs,
+          title: currentApp.name,
+          templateId: currentApp.id,
+          secrets: {}
+        });
+        window.OnePageAppsShared.track('app_deploy_gic', { source: 'preview', app_id: currentApp.id });
+        setDeployStatus(`
+          <div class="font-semibold">Hosted deployment created.</div>
+          <div class="mt-2">URL: <a class="font-semibold underline" href="${result.url}" target="_blank" rel="noopener">${result.url}</a></div>
+          ${result.expiresAt ? `<div class="mt-1">Expires: ${escapeHtml(result.expiresAt)}</div>` : ''}
+        `, 'success');
+      } catch (error) {
+        const checkoutUrl = error?.data?.checkoutUrl || error?.data?.url;
+        if (checkoutUrl) {
+          window.location.href = checkoutUrl;
+          return;
+        }
+        setDeployStatus(escapeHtml(error?.message || 'Hosted deploy failed.'), 'danger');
+      } finally {
+        $('deploy-gic-btn').disabled = false;
       }
     }
 
@@ -1183,6 +1330,11 @@
         populateHeader(app);
         populateSidebar(app);
         renderRelated(app, data.apps || []);
+        window.OnePageAppsShared.track('app_view', {
+          app_id: app.id,
+          app_name: app.name,
+          category: app.category
+        });
         showContent();
         void tryLoadDemo(app);
         if (app.hasHelp) {
@@ -1198,6 +1350,20 @@
     $('theme-toggle').addEventListener('click', toggleTheme);
     $('copy-url-btn').addEventListener('click', handleCopyUrl);
     $('copy-script-btn').addEventListener('click', handleCopyScript);
+    $('deploy-byo-btn').addEventListener('click', () => {
+      window.OnePageAppsShared.track('deploy_cta_click', { source: 'preview', type: 'byo', app_id: currentApp?.id || '' });
+      openDeployModal();
+    });
+    $('deploy-gic-btn').addEventListener('click', () => {
+      window.OnePageAppsShared.track('deploy_cta_click', { source: 'preview', type: 'gic', app_id: currentApp?.id || '' });
+      handleGicDeploy();
+    });
+    $('close-deploy-modal').addEventListener('click', closeDeployModal);
+    $('cancel-deploy-modal').addEventListener('click', closeDeployModal);
+    $('confirm-deploy-modal').addEventListener('click', handleByoDeploy);
+    $('deploy-modal').addEventListener('click', (event) => {
+      if (event.target === $('deploy-modal')) closeDeployModal();
+    });
     window.addEventListener('beforeunload', revokeCurrentDemoUrl);
     init();
   </script>
